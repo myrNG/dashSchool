@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {AuthentificationService} from "../services/authentification.service";
+import {User} from "../models/user";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+	selector: 'app-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.sass'],
+	providers: [AuthentificationService]
 })
 export class LoginComponent implements OnInit {
-
-	constructor() { }
+	
+	constructor(private auth: AuthentificationService) {
+	}
 	
 	ngOnInit() {
 	}
@@ -18,7 +22,7 @@ export class LoginComponent implements OnInit {
 	 * @param f = form
 	 */
 	onSubmit(f: NgForm): void {
-		f.valid ? console.log(`Login : ${f.value.login}, Mot de passe : ${f.value.password}`) : false
+		f.valid ? console.log(`Login : ${f.value.login}, Mot de passe : ${f.value.password}`) : false;
 	}
 	
 	/**
@@ -29,5 +33,5 @@ export class LoginComponent implements OnInit {
 	isValid(f: NgForm): boolean {
 		return f.submitted && !f.valid
 	}
-
+	
 }
