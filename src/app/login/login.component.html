@@ -1,5 +1,6 @@
-<form #f="ngForm" (ngSubmit)="return">
-	<input type="text" name="login" placeholder="Login" autofocus>
-	<input type="password" name="password" placeholder="Password">
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+	<input type="text" name="login" placeholder="Login" ngModel required autofocus #login="ngModel">
+	<input type="password" name="password" placeholder="Password" ngModel required #password="ngModel">
 	<button>Valider</button>
 </form>
+<p *ngIf="isValid(form)" class="not-valid">Veuillez remplir tous les champs</p>
