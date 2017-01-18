@@ -4,7 +4,7 @@ _This project was generated with [angular-cli](https://github.com/angular/angula
 
 **DashSchool** est une application Web permettant une gestion simplifiée de votre classe/promo en tant que professeur/chargé de formation.
 
-Projet en mode **Agile** - Sprint de 10 jours - Objectif de PMV _(Produit minimum viable)_.
+Projet en mode **Agile** - Sprint de 10 jours - Objectif de MVP _(Minimum Viable Product)_.
 
 L'équipe chargée du projet :
 
