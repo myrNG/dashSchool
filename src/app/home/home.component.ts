@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 	}
 	
 	disconnectMe() {
-		console.log('Deconnexion en cours...')
+		console.log('Deconnexion en cours...');
 		this.auth.logOut();
 		this.router.navigate(['/login']);
 	}

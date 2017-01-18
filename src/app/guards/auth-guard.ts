@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
 			return true;
 		}
 		
-		// not logged in so redirect to login page with the return url
+		// User non reconnu, redirigé vers le login
 		console.log('Utilisateur non reconnu ou inexistant -> retour au login...');
 		this.router.navigate(['/login']);
 		return false;
