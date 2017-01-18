@@ -1,22 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit, Input} from '@angular/core';
+import {NgForm, FormControlDirective, FormControl} from '@angular/forms';
 import {AuthentificationService} from "../services/authentification.service";
-import {Router, ActivatedRoute} from "@angular/router";
+import {Router, ActivatedRoute, Route} from "@angular/router";
 
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.sass'],
-	providers: [AuthentificationService]
+	styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
 	returnUrl: string;
+	formControl: FormControl;
 	
-	constructor(private auth: AuthentificationService) {
+	constructor(private auth: AuthentificationService, private router: Router, private route: ActivatedRoute) {
 	}
 	
 	ngOnInit() {
-		// this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 	}
 	
 	/**
@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
 			this.auth.logIn(f.value.login, f.value.password)
 				.subscribe(
 					data => {
-						// this.router.navigate([this.returnUrl]);
-						console.log("Auth OK", data)
+						console.log("Authentification OK");
+						this.router.navigate([this.returnUrl]);
 					},
 					error => {
 						console.log("erreur d'authentification", error)
@@ -37,14 +37,14 @@ export class LoginComponent implements OnInit {
 		} else
 			return false
 	}
-	
 	/**
 	 * Vérifie au moment du submit si les deux champs sont remplis
 	 * @param f = form
+	 * @param e = input
 	 * @returns {boolean}
 	 */
-	isValid(f: NgForm): boolean {
-		return f.submitted && !f.valid
+	isEmpty(f: NgForm, e: FormControlDirective): boolean {
+		return f.submitted && e.viewModel.length < 1
 	}
 	
 }

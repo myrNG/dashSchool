@@ -12,15 +12,15 @@ export class AuthentificationService {
 		console.log("tentative d'authentification");
 		return this.http.post('http://dash-school.hol.es/api/web/login', JSON.stringify({ login: login, password: password }))
 			.map((response: Response) => {
-				let responseJSON = response.json();
-				console.log('réponse serveur', responseJSON);
+				let user = response.json();
+				console.log('server response', user);
+				if (user){
+					localStorage.setItem('currentUser', JSON.stringify(user));
+				}
 			});
-			// 	if (user && user.token){
-			// 		localStorage.setItem('currentUser', JSON.stringify(user));
-			// 	}
-			// })
 	}
 	logOut() {
 		localStorage.removeItem('currentUser');
+		
 	}
 }
