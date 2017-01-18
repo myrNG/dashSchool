@@ -1,31 +1,14 @@
-# DashSchool
+# DashSchool - v1.0 beta
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+_This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24._
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**DashSchool** est une application Web permettant une gestion simplifiée de votre classe/promo en tant que professeur/chargé de formation.
 
-## Code scaffolding
+Projet en mode **Agile** - Sprint de 10 jours - Objectif de PMV _(Produit minimum viable)_.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+L'équipe chargée du projet :
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to Github Pages
-
-Run `ng github-pages:deploy` to deploy to Github Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
++ Myriam Niaré-Guilloux (Front-End Dev) [Github](https://github.com/myrNG) - [LinkedIn](https://www.linkedin.com/in/myriam-niare-guilloux)
++ Solenn Baer (Back-End Dev) [Github](https://github.com/simplon-solennB) - [LinkedIn](https://www.linkedin.com/in/solenn-baer-372bb4135)
++ Romain Etheve (Back-End Dev) [Github](https://github.com/etbeur) - [LinkedIn](https://www.linkedin.com/in/romain-etheve)
++ Raphaël Di Rago (Front-End Dev) [Github](https://github.com/dirago) - [LinkedIn](https://www.linkedin.com/in/rapha%C3%ABl-di-rago-400b79112)
