@@ -9,13 +9,16 @@ export class AuthentificationService {
 	}
 	
 	logIn(login: string, password: string) {
-		return this.http.post('a-determiner/api/login', JSON.stringify({ login: login, password: password }))
+		console.log("tentative d'authentification");
+		return this.http.post('http://dash-school.hol.es/api/web/login', JSON.stringify({ login: login, password: password }))
 			.map((response: Response) => {
-				let user = response.json();
-				if (user && user.token){
-					localStorage.setItem('currentUser', JSON.stringify(user));
-				}
-			})
+				let responseJSON = response.json();
+				console.log('réponse serveur', responseJSON);
+			});
+			// 	if (user && user.token){
+			// 		localStorage.setItem('currentUser', JSON.stringify(user));
+			// 	}
+			// })
 	}
 	logOut() {
 		localStorage.removeItem('currentUser');
