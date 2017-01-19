@@ -17,12 +17,11 @@ export class HomeComponent implements OnInit {
 	ngOnInit() {
 		let userStored = JSON.parse(sessionStorage.getItem('currentUser'));
 		this.currentUser = new User(userStored.id, userStored.login, userStored.firstname, userStored.lastname);
-		console.log(this.currentUser);
-		console.log('home detected -> ', this.currentUser);
+		console.log('Accès Home détecté avec user -> ', this.currentUser);
 	}
 	
 	disconnectMe() {
-		console.log('Deconnexion en cours...');
+		console.log('Déconnexion en cours...');
 		this.auth.logOut();
 		this.router.navigate(['/login']);
 	}

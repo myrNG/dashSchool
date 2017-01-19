@@ -16,7 +16,7 @@ export class AuthentificationService {
 			.map((response: Response) => {
 				let user = response.json();
 				console.log('server response', user);
-				if (user) {
+				if (!user.responseServer) {
 					sessionStorage.setItem('currentUser', JSON.stringify(user));
 				}
 			});

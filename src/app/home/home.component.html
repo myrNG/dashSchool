@@ -1,4 +1,4 @@
 <p>
-  Bienvenue {{ currentUser.login | firstLetterUppercase }}
+  Bienvenue {{ currentUser.firstname | firstLetterUppercase }} {{ currentUser.lastname | firstLetterUppercase }}, vous avez l'ID {{ currentUser.id }}
 </p>
 <button (click)="disconnectMe()">Se déconnecter</button>
