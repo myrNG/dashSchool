@@ -12,11 +12,13 @@ export class HomeComponent implements OnInit {
 	currentUser: User;
 	
 	constructor(private auth: AuthentificationService, private router: Router) {
-		this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	}
 	
 	ngOnInit() {
-		console.log('home detected -> ', this.currentUser)
+		let userStored = JSON.parse(sessionStorage.getItem('currentUser'));
+		this.currentUser = new User(userStored.id, userStored.login, userStored.firstname, userStored.lastname);
+		console.log(this.currentUser);
+		console.log('home detected -> ', this.currentUser);
 	}
 	
 	disconnectMe() {

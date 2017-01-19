@@ -1,7 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {NgForm, FormControlDirective, FormControl} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {NgForm, FormControlDirective} from '@angular/forms';
 import {AuthentificationService} from "../services/authentification.service";
-import {Router, ActivatedRoute, Route} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
 	selector: 'app-login',
@@ -10,13 +10,14 @@ import {Router, ActivatedRoute, Route} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 	returnUrl: string;
-	formControl: FormControl;
 	
 	constructor(private auth: AuthentificationService, private router: Router, private route: ActivatedRoute) {
 	}
 	
 	ngOnInit() {
 		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+		// Inutile d'accéder à l'auth si User est déjà loggé -> redirection Home
+		return sessionStorage.getItem('currentUser') ? this.router.navigate(['/home']) : false;
 	}
 	
 	/**
