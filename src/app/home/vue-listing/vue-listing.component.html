@@ -2,7 +2,7 @@
  on récuère l'ID de l'élève afin d'avoir accès aux détails.
  Cette vue est masquée par défaut
  -->
-<div class="listing-box" *ngIf="bool == true">
+<div class="listing-box" *ngIf="student.id == activeId">
   <div class="student-card">
     <div class="reduce-button">
       <!-- Pour réduire la fenêtre, on rebascule à létat par défault -->
@@ -10,7 +10,7 @@
     </div>
     <div *ngFor="let student of students">
       <!-- Si l'ID correspond/existe , on affiche les détails -->
-      <div *ngIf="student.id == activeId">
+      <div >
         <div class="infos">
           <h3>{{student.name}}</h3>
           <p>Username : {{student.username}}</p>
@@ -53,8 +53,8 @@
         <td>{{student.username}}</td>
         <td>{{student.email}}</td>
         <td>
-          <button (click)="seeMore(true, student.id)"> détails </button>
-          <button (click)="deleteStudent()">Suppr</button>
+          <button class="details" (click)="seeMore(student.id)"> détails </button>
+          <button class="supprimer" (click)="deleteStudent()">Suppr</button>
         </td>
       </tr>
     </tbody>
