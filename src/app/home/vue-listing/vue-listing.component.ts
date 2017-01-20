@@ -12,7 +12,6 @@ import {ListingService} from '../../services/listing.service';
 export class VueListingComponent implements OnInit {
   students: Student[];
   activeId: number;
-  bool: boolean;
 
   constructor(private listService: ListingService) { }
 
@@ -31,11 +30,10 @@ export class VueListingComponent implements OnInit {
   addStudent(){ }
 
   //Voir la fiche détaillée de l'élève
-  seeMore(bool: boolean, id: number){
+  seeMore(id: number){
     if(id){
       this.activeId = id;
     }
-    this.bool = bool;
   }
 
   deleteStudent(){ }
