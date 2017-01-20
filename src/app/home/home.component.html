@@ -1,4 +1,13 @@
-<p>
-  Bienvenue {{ currentUser.login | firstLetterUppercase }}
-</p>
-<button (click)="disconnectMe()">Se déconnecter</button>
+<header>
+  <div>
+    <h2>Bienvenue {{ currentUser.login | firstLetterUppercase }}</h2>
+  </div>
+  <div><button (click)="disconnectMe()">Déconnection</button></div>
+
+</header>
+
+
+
+<div id="viewListing">
+  <app-vue-listing></app-vue-listing>
+</div>
