@@ -10,6 +10,11 @@ import {Router, ActivatedRoute} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 	returnUrl: string;
+	// Auto-fill pour le formulaire pendant le dev :<
+	connexion: Object = {
+		loginUser: 'admin',
+		passwordUser: 'admin'
+	};
 	
 	constructor(private auth: AuthentificationService, private router: Router, private route: ActivatedRoute) {
 	}
