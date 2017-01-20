@@ -1,4 +1,20 @@
+<<<<<<< HEAD
 <p>
   Bienvenue {{ currentUser.firstname | firstLetterUppercase }} {{ currentUser.lastname | firstLetterUppercase }}, vous avez l'ID {{ currentUser.id }}
 </p>
 <button (click)="disconnectMe()">Se déconnecter</button>
+=======
+<header>
+  <div>
+    <h2>Bienvenue {{ currentUser.login | firstLetterUppercase }}</h2>
+  </div>
+  <div><button (click)="disconnectMe()">Déconnection</button></div>
+
+</header>
+
+
+
+<div id="viewListing">
+  <app-vue-listing></app-vue-listing>
+</div>
+>>>>>>> 77a5f9531566746cda99cab510cca176e7df8f2e

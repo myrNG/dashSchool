@@ -9,15 +9,18 @@ import {HomeComponent} from './home/home.component';
 
 import {AuthGuard} from "./guards/auth-guard";
 import {AuthentificationService} from "./services/authentification.service";
+import {ListingService} from "./services/listing.service";
 import {routing} from "./app.routing";
 import {FirstLetterUppercasePipe} from "./pipes/first-letter-uppercase.pipe";
+import {VueListingComponent} from './home/vue-listing/vue-listing.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
 		HomeComponent,
-		FirstLetterUppercasePipe
+		FirstLetterUppercasePipe,
+		VueListingComponent
 	],
 	imports: [
 		BrowserModule,
@@ -27,7 +30,9 @@ import {FirstLetterUppercasePipe} from "./pipes/first-letter-uppercase.pipe";
 	],
 	providers: [
 		AuthGuard,
-		AuthentificationService
+		AuthentificationService,
+    ListingService
+
 	],
 	bootstrap: [AppComponent]
 })

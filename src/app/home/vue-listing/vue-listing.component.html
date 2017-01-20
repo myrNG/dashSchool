@@ -1,0 +1,28 @@
+<div class="listing-box" *ngIf="students">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>prenom</th>
+        <th>nom</th>
+        <th>spec</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{student.photo}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.username}}</td>
+        <td>{{student.spec}}</td>
+        <td>
+          <button (click)="seeMore()"> détails </button>
+          <button (click)="deleteStudent()">Suppr</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="!students">
+    <p>Pas de promo actuellement</p>
+</div>
