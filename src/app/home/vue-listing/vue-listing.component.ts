@@ -13,7 +13,6 @@ export class VueListingComponent implements OnInit {
   students: Student[];
   activeId: number;
 
-
   constructor(private listService: ListingService) { }
 
   ngOnInit() {
