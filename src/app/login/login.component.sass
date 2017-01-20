@@ -1,27 +1,28 @@
+#container
+	min-width: 1000px
 
+	form
+		display: flex
+		flex-direction: column
+		align-items: center
 
-form
-	display: flex
-	flex-direction: column
-	align-items: center
+		input
+			padding: 10px
+			border: none
+			border-bottom: 1px solid
+			outline: none
+			margin-bottom: 10px
+			font-size: 1em
+			&:active, &:focus
+				border-bottom: 2px solid
 
-	input
-		padding: 10px
-		border: none
-		border-bottom: 1px solid
-		outline: none
-		margin-bottom: 10px
-		font-size: 1em
-		&:active, &:focus
-			border-bottom: 2px solid
-
-	button
-		padding: 10px
-		margin-top: 20px
-		width: 50%
-		background-color: white
-		border: 1px solid
-		outline: none
+		button
+			padding: 10px
+			margin-top: 20px
+			width: 50%
+			background-color: white
+			border: 1px solid
+			outline: none
 
 .not-valid
 	color: red
