@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 	ngOnInit() {
 		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 		// Inutile d'accéder à l'auth si User est déjà loggé -> redirection Home
-		return sessionStorage.getItem('currentUser') ? this.router.navigate(['/home']) : false;
+		return localStorage.getItem('currentUser') ? this.router.navigate(['/home']) : false;
 	}
 	
 	/**

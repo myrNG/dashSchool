@@ -17,12 +17,12 @@ export class AuthentificationService {
 				let user = response.json();
 				console.log('server response', user);
 				if (!user.responseServer) {
-					sessionStorage.setItem('currentUser', JSON.stringify(user));
+					localStorage.setItem('currentUser', JSON.stringify(user));
 				}
 			});
 	}
 	
 	logOut() {
-		sessionStorage.removeItem('currentUser');
+		localStorage.removeItem('currentUser');
 	}
 }

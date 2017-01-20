@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
 	
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 		console.log('Vérification des acces Admin');
-		if (sessionStorage.getItem('currentUser')) {
+		if (localStorage.getItem('currentUser')) {
 			// User peut accéder à la route si il est loggé
 			console.log('Utilisateur reconnu -> accès à la home en cours...');
 			return true;
