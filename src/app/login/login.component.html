@@ -1,6 +1,4 @@
 <div id="container">
-  <h1>dashSchool - v1</h1>
-
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
     <input type="text" name="login" placeholder="Login" ngModel required autofocus #login="ngModel">
     <p *ngIf="isEmpty(form, login)" class="not-valid">Champ requis</p>
