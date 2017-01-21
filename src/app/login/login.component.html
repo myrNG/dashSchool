@@ -5,5 +5,7 @@
     <input type="password" name="password" placeholder="Password" ngModel required #password="ngModel" [(ngModel)]="connexion.passwordUser">
     <p *ngIf="isEmpty(form, password)" class="not-valid">Champ requis</p>
     <button>Valider</button>
+    <img class="loading" src="../../assets/rolling.gif" alt="chargement" *ngIf=loading>
+    <p *ngIf="authenficationFailed" class="conError">Mauvaise combinaison login/mot de passe</p>
   </form>
 </div>
