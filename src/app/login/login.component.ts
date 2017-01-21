@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 	returnUrl: string;
 	// Auto-fill pour le formulaire pendant le dev :<
 	connexion: Object = {
-		loginUser: 'admin',
+		loginUser: '',
 		passwordUser: 'admin'
 	};
 	

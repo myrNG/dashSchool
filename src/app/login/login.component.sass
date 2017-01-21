@@ -1,36 +1,35 @@
 #container
-	max-width: 60%
+	max-width: 60vw
 	margin: auto
 	margin-top: 15%
 	font-family: sans-serif
 
-	form
-		display: flex
-		flex-direction: column
-		align-items: center
+form
+	display: flex
+	flex-direction: column
+	align-items: center
 
-		input
-			padding: 10px
-			border: none
-			border-bottom: 1px solid
-			outline: none
-			margin-bottom: 10px
-			font-size: 1em
-			&:active, &:focus
+	input
+		padding: 10px
+		border: none
+		border-bottom: 1px solid
+		outline: none
+		margin-bottom: 10px
+		font-size: 1em
+		&:active, &:focus
 			border-bottom: 2px solid
 
-		button
-			padding: 10px
-			margin-top: 20px
-			width: 10%
-			background-color: #4CAF50
-			color: #FFF
-			border: 1px solid
-			outline: none
+	.not-valid
+		color: red
+		margin: 0
+		padding: 0
+		font-size: 0.8em
 
-.not-valid
-	color: red
-	margin: 0
-	padding: 0
-	align-self: flex-start
-	font-size: 0.8em
+	button
+		padding: 10px
+		margin-top: 20px
+		width: 10%
+		background-color: #4CAF50
+		color: #FFF
+		border: 1px solid
+		outline: none

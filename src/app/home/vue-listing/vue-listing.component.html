@@ -6,7 +6,7 @@
   <div class="student-card">
     <div class="reduce-button">
       <!-- Pour réduire la fenêtre, on rebascule à létat par défault -->
-      <button (click)="seeMore('default')">Reduire</button>
+      <button (click)="seeLess()">Reduire</button>
     </div>
     <div *ngFor="let student of students">
       <!-- Si l'ID correspond/existe , on affiche les détails -->
