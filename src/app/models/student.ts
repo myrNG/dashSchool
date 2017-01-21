@@ -1,5 +1,5 @@
 export class Student {
-  /*id: number;
+  id: number;
   firstname: string;
   lastname: string;
   birthDate: Date;
@@ -12,8 +12,9 @@ export class Student {
   personalProject: string;
   photo: string;
   // il manque la specialisation!
-  */
 
+
+  /*
   id: number;
   name: string;
   username: string;
@@ -35,5 +36,6 @@ export class Student {
     catchPhrase: string,
     bs: string
   };
+  */
 }
 
