@@ -46,6 +46,8 @@ export class VueListingComponent implements OnInit {
   seeMore(id: number){
     if(id){
       this.activeId = id;
+    } else{
+      this.activeId = null;
     }
   }
 
