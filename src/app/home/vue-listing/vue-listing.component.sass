@@ -4,31 +4,42 @@
   font-family: sans-serif
   .students-finder
   table
-    max-width: 100%
+    min-width: 90%
     margin: auto
     margin-top: 7%
-    border: 1px solid black
+
     border-collapse: collapse
     thead
       background-color: #3F51B5
       color: #FFF
-      th
-        padding: 5%
+      tr
+
+        th
+          padding: 1.5%
+          text-align: center
 
     tbody
-      td
-        padding: 2%
+      tr
+        border-bottom: 1px solid rosybrown
+        vertical-align: baseline
 
-      .options
-        display: flex
-        .details
-          background-color: #03A9F4
-        button
-          background-color: crimson
-          padding: 7px 15px
-          color: #FFF
-          border: none
-          border-radius: 5px
+        td
+          padding: 2%
+          text-align: center
+
+        .options
+          display: flex
+          justify-content: space-around
+          align-items: center
+          .details
+            background-color: #03A9F4
+          button
+            background-color: crimson
+            padding: 7px 15px
+            color: #FFF
+            border: none
+            border-radius: 5px
+
 .listing-box-plus
   max-width: 90%
   margin: auto
