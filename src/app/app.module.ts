@@ -13,6 +13,8 @@ import {ListingService} from "./services/listing.service";
 import {routing} from "./app.routing";
 import {FirstLetterUppercasePipe} from "./pipes/first-letter-uppercase.pipe";
 import {VueListingComponent} from './home/vue-listing/vue-listing.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
 	declarations: [
@@ -20,7 +22,9 @@ import {VueListingComponent} from './home/vue-listing/vue-listing.component';
 		LoginComponent,
 		HomeComponent,
 		FirstLetterUppercasePipe,
-		VueListingComponent
+		VueListingComponent,
+		HeaderComponent,
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,

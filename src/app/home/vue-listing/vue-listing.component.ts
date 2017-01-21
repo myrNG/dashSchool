@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, trigger, state, style, transition, animate } from '@angular/core';
 import {Student} from "../../models/student";
 import {ListingService} from '../../services/listing.service';
 
@@ -7,7 +7,20 @@ import {ListingService} from '../../services/listing.service';
   selector: 'app-vue-listing',
   templateUrl: './vue-listing.component.html',
   styleUrls: ['./vue-listing.component.sass'],
-  providers: [ListingService]
+  providers: [ListingService],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({transform: 'translateX(0)'})),
+      transition('void => *', [
+        style({transform: 'translateX(-100%)'}),
+        animate(500)
+      ]),
+      transition('* => void', [
+        animate(500, style({transform: 'translateX(100%)'}))
+      ])
+    ])
+  ]
+
 })
 export class VueListingComponent implements OnInit {
   students: Student[];
