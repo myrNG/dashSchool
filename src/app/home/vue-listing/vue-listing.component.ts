@@ -50,6 +50,10 @@ export class VueListingComponent implements OnInit {
       this.activeId = null;
     }
   }
+  
+  seeLess(){
+    this.activeId = null;
+  }
 
   deleteStudent(){ }
 

@@ -12,9 +12,12 @@ export class LoginComponent implements OnInit {
 	returnUrl: string;
 	// Auto-fill pour le formulaire pendant le dev :<
 	connexion: Object = {
-		loginUser: 'admin',
+		loginUser: '',
 		passwordUser: 'admin'
 	};
+	// gif loading
+	loading: boolean = false;
+	authenficationFailed: boolean;
 	
 	constructor(private auth: AuthentificationService, private router: Router, private route: ActivatedRoute) {
 	}
@@ -31,11 +34,18 @@ export class LoginComponent implements OnInit {
 	 */
 	onSubmit(f: NgForm) {
 		if (f.valid) {
+			this.loading = true;
+			this.authenficationFailed = false;
 			this.auth.logIn(f.value.login, f.value.password)
 				.subscribe(
 					data => {
 						console.log("Réponse serveur OK");
-						this.router.navigate([this.returnUrl]);
+						if (this.auth.isAuthentificated) {
+							this.router.navigate([this.returnUrl]);
+						} else {
+							this.loading = false;
+							this.authenficationFailed = true;
+						}
 					},
 					error => {
 						console.log("erreur d'authentification", error)

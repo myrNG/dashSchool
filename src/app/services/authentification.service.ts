@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthentificationService {
+	isAuthentificated:boolean;
 	
 	constructor(private http: Http) {}
 	
@@ -17,8 +18,11 @@ export class AuthentificationService {
 				let user = response.json();
 				console.log('server response', user);
 				if (!user.responseServer) {
+					this.isAuthentificated = true;
 					localStorage.setItem('currentUser', JSON.stringify(user));
-				}
+				} else
+					this.isAuthentificated = false;
+					
 			});
 	}
 	
