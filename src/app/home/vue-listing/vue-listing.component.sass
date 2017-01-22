@@ -1,3 +1,4 @@
+/* Listing */
 .listing-box
   max-width: 90%
   margin: auto
@@ -24,10 +25,12 @@
         border-bottom: 1px solid rosybrown
         vertical-align: baseline
 
+        .listing-photo
+          width: 50px
+          height: 50px
         td
           padding: 2%
           text-align: center
-
         .options
           display: flex
           justify-content: space-around
@@ -41,14 +44,13 @@
             border: none
             border-radius: 5px
 
+/* Fiche de l'élève */
 .listing-box-plus
   max-width: 90%
   margin: auto
   font-family: sans-serif
   display: flex
   justify-content: space-around
-  border: 1px solid black
-
 
   .student-card
     width: 80%
@@ -61,17 +63,26 @@
         border: none
         border-radius: 5px
     div
-
       .view
         display: flex
-        justify-content: space-around
-        border: 1px solid darkviolet
-        .infos
+        flex-direction: column
+        border: 3px solid #3F51B5
+        padding: 5%
+        border-radius: 5px
+        .profile-entete
+          min-width: 100%
           h3
-          p
+            text-transform: uppercase
+        .profile
+          display: flex
+          justify-content: space-around
+          border-bottom: 1px solid rosybrown
+          .profile-name
+            text-transform: capitalize
         .address
-          h3
-          p
-button
-	outline: none
-	cursor: crosshair
+          border-bottom: 1px solid rosybrown
+        .skills
+          border-bottom: 1px solid rosybrown
+        .social-medias
+
+

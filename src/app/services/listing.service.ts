@@ -11,45 +11,26 @@ import {Student} from "../models/student";
 export class ListingService {
   //private listingUrl: string = 'https://jsonplaceholder.typicode.com/users';
   private listingUrl: string = 'http://raphaeldirago.com/dashSchool/api/web/listing';
-  //private listingUrl: string = 'dash-school.hol.es/api/web/listing';
-  //private studentUrl: string = 'dash-school.hol.es/api/web/listing/detailStudent';
+  private studentUrl: string = 'http://raphaeldirago.com/dashSchool/api/web/listing/detailStudent/';
 
   students: Observable<Student[]>;
+  student: Observable<Student []>;
 
   constructor(private http: Http) {
   }
 
-  /*getListing() {
-    console.log('Getting Listing');
 
-    return this.http.get(this.listingUrl)
-      .map((res: Response) => <Student[]> res.json())
-      .catch(this.handleError);
-
-  }
-  */
   getListing(){
-     // Permet de personnalister la requete avec l'id du student
-     //const id = new RequestOptions({ method: RequestMethod.Get });
      return this.http.get(this.listingUrl) // rajouter interpo de id
             .map((res: Response) => <Student[]> res.json())
             .catch(this.handleError);
    }
-  /*
-  * getListing(){
-  *   // Permet de personnalister la requete avec l'id du student
-  *   const id = new RequestOptions({ method: RequestMethod.Get });
-  *   return this.http.get(this.listingUrl, options) // rajouter interpo de id
-  *     .map(res: Response) => <Student[]> res.json()
-  *     .catch(this.handleError);
-  * }
-  *
-  * getStudent(id:number){
-  *   return this.http.get(`dash-school.hol.es/api/web/listing/detailStudent/${id}`)
-  *     .map((res: Response) => <Student> res.json())
-  *     .catch(this.handleError);
-  * }
-  * */
+  getStudent(id:number){
+    return this.http.get(this.studentUrl+id)// rajouter interpo de id
+      .map((res: Response) => <Student[]> res.json() )
+      .catch(this.handleError);
+  }
+
 
 
   handleError(error: Response) {
