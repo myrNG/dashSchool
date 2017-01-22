@@ -10,7 +10,7 @@ import {Student} from "../models/student";
 @Injectable()
 export class ListingService {
   //private listingUrl: string = 'https://jsonplaceholder.typicode.com/users';
-  private listingUrl: string = 'http://raphaeldirago.com/dashSchool/api/web/login';
+  private listingUrl: string = 'http://raphaeldirago.com/dashSchool/api/web/listing';
   //private listingUrl: string = 'dash-school.hol.es/api/web/listing';
   //private studentUrl: string = 'dash-school.hol.es/api/web/listing/detailStudent';
 
