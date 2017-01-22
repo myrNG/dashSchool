@@ -3,6 +3,7 @@ import {Student} from "../../models/student";
 import {ListingService} from '../../services/listing.service';
 
 
+
 @Component({
   selector: 'app-vue-listing',
   templateUrl: './vue-listing.component.html',
@@ -23,8 +24,11 @@ import {ListingService} from '../../services/listing.service';
 
 })
 export class VueListingComponent implements OnInit {
+
   students: Student[];
   activeId: number;
+  student: Student[];
+
 
   constructor(private listService: ListingService) { }
 
@@ -35,24 +39,33 @@ export class VueListingComponent implements OnInit {
 
   getStudents(){
     this.listService.getListing()
-      .subscribe(
-        students => this.students = students
-      )
+        .retry(3) // On retente 3 fois si la requete failed
+        .subscribe(
+          students => this.students = students
+        )
   }
 
-  addStudent(){ }
+  getStudent(id:number){
+      this.listService.getStudent(id)
+      .subscribe(
+        student => this.student = student
+      )
+   }
+
+
 
   //Voir la fiche détaillée de l'élève
   seeMore(id: number){
     if(id){
       this.activeId = id;
+      this.getStudent(id);
     }
   }
-  
+
   seeLess(){
     this.activeId = null;
   }
 
-  deleteStudent(){ }
+
 
 }
