@@ -62,9 +62,11 @@ export class VueListingComponent implements OnInit {
     }
   }
 
+  // Réduire la fenêtre / revenir à la vue listing
   seeLess(){
     this.activeId = null;
   }
+
 
 
 
