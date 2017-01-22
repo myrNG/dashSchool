@@ -27,28 +27,33 @@ export class VueListingComponent implements OnInit {
 
   students: Student[];
   activeId: number;
-  student: Student[];
+  student: Student;
 
 
   constructor(private listService: ListingService) { }
 
   ngOnInit() {
     this.getStudents();
-    console.log('Students',this.students);
   }
 
   getStudents(){
     this.listService.getListing()
         .retry(3) // On retente 3 fois si la requete failed
         .subscribe(
-          students => this.students = students
+			(students) => {
+				this.students = students;
+				console.log('Students',this.students);
+			}
         )
   }
 
   getStudent(id:number){
       this.listService.getStudent(id)
       .subscribe(
-        student => this.student = student
+		  (student) => {
+		  	this.student = student;
+		  	console.log(student)
+		  }
       )
    }
 
