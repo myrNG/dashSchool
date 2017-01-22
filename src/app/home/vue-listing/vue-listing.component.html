@@ -2,19 +2,19 @@
 <div class="listing-box-plus" *ngIf="activeId">
   <div class="student-card">
     <div class="reduce-button">
-      <button (click)="seeLess()">Reduire</button>
+      <button (click)="seeLess()">Reduire</button><!-- TODO mettre "retour" à la place  -->
     </div>
     <div *ngFor="let student of students">
       <div class="view" *ngIf="student.id == activeId">
         <!-- Profile -->
         <div class="profile">
           <div class="profile-photo">
-            <img *ngIf="student.photo == null" src="./src/app/home/img/noImage.png" width="200px"/> <!-- FIXME -->
+            <!--<img *ngIf="student.photo == null" [src]="/img/noImage.png" width="200px"/> <!-- FIXME -->
             <img *ngIf="student.photo" src="{{student.photo}}" alt="photo" width="200px"/>
           </div>
           <div class="profile-name">
             <h2>{{student.firstname}} {{student.lastname}}</h2>
-            <p>Né(e) le {{student.birthDate.date | date}}</p><!-- FIXME format Date -->
+            <p>Né(e) le {{student.birthDate.date | date:"dd/MM/yy"}}</p>
           </div>
         </div>
         <!-- Coordonnées -->
@@ -22,10 +22,10 @@
           <div class="profile-entete">
             <h3>Coordonées</h3>
           </div>
-          <p>{{student.address}}</p>
-          <p>{{student.phone}}</p>
-          <p>{{student.emergencyContact}}</p>
-          <p>{{student.email}}</p>
+          <p>Adresse: {{student.address}}</p>
+          <p>Tél: {{student.phone}}</p>
+          <p>A contacter en cas d'urgence: {{student.emergencyContact}}</p>
+          <p>Email :{{student.email}}</p>
         </div>
         <!-- Skills -->
         <div class="skills">
@@ -55,7 +55,7 @@
 <!-- Aperçu Listing de la Home -->
 <div class="listing-box" *ngIf="students">
   <div class="students-finder">
-    <input type="text" placeholder="Rechercher">
+    <input  type="text" placeholder="Rechercher">
   </div>
   <table>
     <thead>
@@ -70,7 +70,7 @@
     <tbody>
     <tr *ngFor="let student of students" [@flyInOut]="student.state">
       <td class="listing-photo">
-        <img src="{{student.photo}}" alt="photo student" width="100px">
+        <img *ngIf="student.photo" src="{{student.photo}}" alt="photo student" width="100px">
       </td>
       <td>{{student.firstname}}</td>
       <td>{{student.lastname}}</td>
