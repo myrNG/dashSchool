@@ -5,12 +5,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthentificationService {
 	isAuthentificated:boolean;
-	
+
 	constructor(private http: Http) {}
-	
+
 	logIn(login: string, password: string) {
 		console.log("tentative d'authentification");
-		return this.http.post('http://dash-school.hol.es/api/web/login', JSON.stringify({
+		return this.http.post('http://raphaeldirago.com/dashSchool/api/web/login', JSON.stringify({
 			login: login,
 			password: password
 		}))
@@ -22,10 +22,10 @@ export class AuthentificationService {
 					localStorage.setItem('currentUser', JSON.stringify(user));
 				} else
 					this.isAuthentificated = false;
-					
+
 			});
 	}
-	
+
 	logOut() {
 		localStorage.removeItem('currentUser');
 	}
