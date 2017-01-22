@@ -1,40 +1,58 @@
-<!-- Si on récupère une promo ET SI on click sur le bouton Détails,
- on récuère l'ID de l'élève afin d'avoir accès aux détails.
- Cette vue est masquée par défaut
- -->
+<!-- Détail de la fiche élève -->
 <div class="listing-box-plus" *ngIf="activeId">
   <div class="student-card">
     <div class="reduce-button">
-      <!-- Pour réduire la fenêtre, on rebascule à létat par défault -->
       <button (click)="seeLess()">Reduire</button>
     </div>
     <div *ngFor="let student of students">
-      <!-- Si l'ID correspond/existe , on affiche les détails -->
       <div class="view" *ngIf="student.id == activeId">
-        <div class="infos">
-          <h3>{{student.name}}</h3>
-          <p>Username : {{student.username}}</p>
-          <p>Email: {{student.email}}</p>
-          <p>Tél: {{student.phone}}</p>
+        <!-- Profile -->
+        <div class="profile">
+          <div class="profile-photo">
+            <img *ngIf="student.photo == null" src="./src/app/home/img/noImage.png" width="200px"/> <!-- FIXME -->
+            <img *ngIf="student.photo" src="{{student.photo}}" alt="photo" width="200px"/>
+          </div>
+          <div class="profile-name">
+            <h2>{{student.firstname}} {{student.lastname}}</h2>
+            <p>Né(e) le {{student.birthDate.date | date}}</p><!-- FIXME format Date -->
+          </div>
         </div>
+        <!-- Coordonnées -->
         <div class="address">
-          <h3>Coordonnées</h3>
-          <p>
-            Address : <br>
-            {{student.address.street}}<br>
-            {{student.address.suite}}<br>
-            {{student.address.city}}<br>
-            {{student.address.zipcode}}<br>
-          </p>
-          <p>{{student.website}}</p>
+          <div class="profile-entete">
+            <h3>Coordonées</h3>
+          </div>
+          <p>{{student.address}}</p>
+          <p>{{student.phone}}</p>
+          <p>{{student.emergencyContact}}</p>
+          <p>{{student.email}}</p>
         </div>
+        <!-- Skills -->
+        <div class="skills">
+          <div class="profile-entete">
+            <h3>Compétences</h3>
+          </div>
+          <p>Compétences</p>
+          <div>
+            <p>Site : <a href="{{student.personalProject}}" alt="website"></a></p>
+          </div>
+        </div>
+        <!-- Social Medias -->
+        <div class="social-medias">
+          <div class="profile-entete">
+            <h3>Réseaux Sociaux</h3>
+          </div>
+          <p>Github : <a href="{{student.github}}">{{student.github}}</a></p>
+          <p>LinkedIn : <a href="{{student.linkedin}}">{{student.linkedin}}</a></p>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
 
 
-<!-- Si on récumère une liste d'élève  -->
+<!-- Aperçu Listing de la Home -->
 <div class="listing-box" *ngIf="students">
   <div class="students-finder">
     <input type="text" placeholder="Rechercher">
@@ -42,101 +60,32 @@
   <table>
     <thead>
     <tr>
-      <th>Id</th>
+      <th></th>
+      <th>Prénom</th>
       <th>Nom</th>
-      <th>Username</th>
       <th>Email</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let student of students" [@flyInOut]="student.state">
-      <td>{{student.id}}</td>
-      <td>{{student.name}}</td>
-      <td>{{student.username}}</td>
+      <td class="listing-photo">
+        <img src="{{student.photo}}" alt="photo student" width="100px">
+      </td>
+      <td>{{student.firstname}}</td>
+      <td>{{student.lastname}}</td>
       <td>{{student.email}}</td>
       <td class="options">
-        <button class="details" (click)="seeMore(student.id)"> détails </button>
+        <button class="details" (click)="seeMore(student.id)"> détails</button>
         <button (click)="deleteStudent()">X</button>
       </td>
     </tr>
     </tbody>
   </table>
 
-
-<!-- Si promo inexistante -->
-<div *ngIf="!students">
-  <p>Pas de promo actuellement</p>
-</div>
-
-  <!--
-
-
-  <div class="listing-box-plus" *ngIf="activeId">
-    <div class="student-card">
-      <div class="reduce-button">
-
-        <button (click)="seeMore('default')">Reduire</button>
-      </div>
-      <div *ngFor="let student of students">
-
-        <div class="view" *ngIf="student.id == activeId">
-          <div class="infos">
-            <img src="{{student.photo}}" alt=""/>
-            <h3>{{student.firstname}}{{student.lastname}}</h3>
-            <p>Date de naissance : {{student.birthDate}}</p>
-            <p>Email: {{student.email}}</p>
-            <p>Tél: {{student.phone}}</p>
-            <p>Tél urgence: {{student.emergencyContact}}</p>
-          </div>
-          <div class="address">
-            <h3>Coordonnées</h3>
-            <p>
-              Address : {{student.address}}
-            </p>
-            <p>{{student.personalProject}}</p>
-            <p>LinkedIn : {{student.linkedin}}</p>
-            <p>Github : {{student.github}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div *ngIf="!students">
+    <p>Pas de promo actuellement</p>
   </div>
 
 
-
-  <div class="listing-box" *ngIf="students">
-    <div class="students-finder">
-      <input type="text" placeholder="Rechercher">
-    </div>
-    <table>
-      <thead>
-      <tr>
-        <th></th>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Email</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let student of students" [@flyInOut]="student.state">
-        <td>{{student.photo}}</td>
-        <td>{{student.firstname}}</td>
-        <td>{{student.lastname}}</td>
-        <td>{{student.birthDate}}</td>
-        <td>
-          <button (click)="seeMore(student.id)"> détails </button>
-          <button (click)="deleteStudent()">Suppr</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-
-
-
-    <div *ngIf="!students">
-      <p>Pas de promo actuellement</p>
-    </div>
-
-    -->
+</div>
