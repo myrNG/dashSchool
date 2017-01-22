@@ -25,6 +25,7 @@ import {ListingService} from '../../services/listing.service';
 export class VueListingComponent implements OnInit {
   students: Student[];
   activeId: number;
+  student: Student[];
 
   constructor(private listService: ListingService) { }
 
@@ -35,12 +36,20 @@ export class VueListingComponent implements OnInit {
 
   getStudents(){
     this.listService.getListing()
-      .subscribe(
-        students => this.students = students
-      )
+        .retry(3) // On retente 3 fois si la requete failed
+        .subscribe(
+          students => this.students = students
+        )
   }
 
-  addStudent(){ }
+  /*getStudent(){
+      this.listService.getStudent()
+      .subscribe(
+        student => this.student = student
+      )
+   }
+*/
+
 
   //Voir la fiche détaillée de l'élève
   seeMore(id: number){
@@ -53,6 +62,6 @@ export class VueListingComponent implements OnInit {
     this.activeId = null;
   }
 
-  deleteStudent(){ }
+
 
 }
