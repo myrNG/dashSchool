@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
 						}
 					},
 					error => {
+						this.loading = false;
 						console.log("erreur d'authentification", error)
 					});
 		} else
