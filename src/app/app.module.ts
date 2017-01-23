@@ -16,6 +16,7 @@ import {VueListingComponent} from './home/vue-listing/vue-listing.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddStudentComponent } from './home/add-student/add-student.component';
+import { CustomSearchComponent } from './home/custom-search/custom-search.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { AddStudentComponent } from './home/add-student/add-student.component';
     HeaderComponent,
     FooterComponent,
     AddStudentComponent,
+    CustomSearchComponent,
+    CustomSearchComponent,
   ],
   imports: [
     BrowserModule,
