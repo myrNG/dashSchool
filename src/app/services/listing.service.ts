@@ -9,7 +9,7 @@ import {Student} from "../models/student";
 
 @Injectable()
 export class ListingService {
-  //private listingUrl: string = 'https://jsonplaceholder.typicode.com/users';
+
   private listingUrl: string = 'http://raphaeldirago.com/dashSchool/api/web/listing';
   private studentUrl: string = 'http://raphaeldirago.com/dashSchool/api/web/listing/detailStudent/';
 
@@ -21,7 +21,7 @@ export class ListingService {
 
 
   getListing(){
-     return this.http.get(this.listingUrl) // rajouter interpo de id
+     return this.http.get(this.listingUrl)
             .map((res: Response) => <Student[]> res.json())
             .catch(this.handleError);
    }

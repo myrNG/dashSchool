@@ -19,21 +19,21 @@ import { ListingService } from '../../services/listing.service';
 			] )
 		] )
 	]
-	
+
 } )
 export class VueListingComponent implements OnInit {
-	
+
 	students: Student[];
 	activeId: number;
 	student: Student;
-	
+
 	constructor( private listService: ListingService ) {
 	}
-	
+
 	ngOnInit() {
 		this.getStudents();
 	}
-	
+
 	getStudents() {
 		this.listService.getListing()
 			.retry( 3 ) // On retente 3 fois si la requete failed
@@ -44,7 +44,7 @@ export class VueListingComponent implements OnInit {
 				}
 			)
 	}
-	
+
 	getStudent( id: number ) {
 		this.listService.getStudent( id )
 			.subscribe(
@@ -54,7 +54,7 @@ export class VueListingComponent implements OnInit {
 				}
 			)
 	}
-	
+
 	//Voir la fiche détaillée de l'élève
 	seeMore( id: number ) {
 		if ( id ) {
@@ -62,9 +62,10 @@ export class VueListingComponent implements OnInit {
 			this.getStudent( id );
 		}
 	}
-	
+
 	seeLess() {
 		this.activeId = null;
 	}
-	
+
+
 }
