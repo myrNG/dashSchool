@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, trigger, state, style, transition, animate } from '@angular/core';
 import { Student } from "../../models/student";
 import { ListingService } from '../../services/listing.service';
+import {CustomFilterPipe} from '../../pipes/custom-filter.pipe';
 
 @Component( {
   selector: 'app-vue-listing',
@@ -19,6 +20,7 @@ import { ListingService } from '../../services/listing.service';
       ] )
     ] )
   ]
+
 
 } )
 export class VueListingComponent implements OnInit {
