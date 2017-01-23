@@ -36,7 +36,7 @@ export class VueListingComponent implements OnInit {
     this.getStudents();
     console.log('Students',this.students);
   }
-
+  // Récupération Listing
   getStudents(){
     this.listService.getListing()
         .retry(3) // On retente 3 fois si la requete failed
@@ -44,7 +44,7 @@ export class VueListingComponent implements OnInit {
           students => this.students = students
         )
   }
-
+  // Récupération de l'lève
   getStudent(id:number){
       this.listService.getStudent(id)
       .subscribe(

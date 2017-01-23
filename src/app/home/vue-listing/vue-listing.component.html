@@ -54,9 +54,13 @@
 
 <!-- Aperçu Listing de la Home -->
 <div class="listing-box" *ngIf="students">
+
+  <!-- Custom research TODO Nouveau component ou pas -->
   <div class="students-finder">
-    <input  type="text" placeholder="Rechercher">
+    <input type="text" placeholder="Rechercher">
   </div>
+
+  <!-- Listing -->
   <table>
     <thead>
     <tr>
@@ -82,7 +86,7 @@
     </tr>
     </tbody>
   </table>
-
+  <!-- Si pas de student -->
   <div *ngIf="!students">
     <p>Pas de promo actuellement</p>
   </div>
