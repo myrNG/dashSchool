@@ -17,28 +17,28 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		LoginComponent,
-		HomeComponent,
-		FirstLetterUppercasePipe,
-		VueListingComponent,
-		HeaderComponent,
-		FooterComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		routing
-	],
-	providers: [
-		AuthGuard,
-		AuthentificationService,
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    FirstLetterUppercasePipe,
+    VueListingComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    routing
+  ],
+  providers: [
+    AuthGuard,
+    AuthentificationService,
     ListingService
 
-	],
-	bootstrap: [AppComponent]
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

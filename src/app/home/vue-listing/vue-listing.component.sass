@@ -1,96 +1,104 @@
 /* Listing */
 .listing-box
-  max-width: 90%
-  margin: auto
-  font-family: sans-serif
-  .students-finder
-    text-align: center
-    input
-      width: 300px
-      height: 30px
-      border: none
-      border-bottom: 1px solid
-      outline: none
-      font-size: 1em
-  table
-    min-width: 90%
-    margin: auto
-    margin-top: 7%
+	max-width: 90%
+	margin: auto
+	font-family: sans-serif
+	.students-finder
+		text-align: center
+		input
+			width: 300px
+			height: 30px
+			border: none
+			border-bottom: 1px solid
+			outline: none
+			font-size: 1em
+	table
+		min-width: 90%
+		margin: auto
+		margin-top: 7%
 
-    border-collapse: collapse
-    thead
-      background-color: #3F51B5
-      color: #FFF
-      tr
+		border-collapse: collapse
+		thead
+			background-color: #3F51B5
+			color: #FFF
+			tr
 
-        th
-          padding: 1.5%
-          text-align: center
+				th
+					padding: 1.5%
+					text-align: center
 
-    tbody
-      tr
-        border-bottom: 1px solid rosybrown
-        vertical-align: baseline
+		tbody
+			tr
+				border-bottom: 1px solid rosybrown
+				vertical-align: baseline
 
-        .listing-photo
-          width: 50px
-          height: 50px
-        td
-          padding: 2%
-          text-align: center
-        .options
-          display: flex
-          justify-content: space-around
-          align-items: center
-          .details
-            background-color: #03A9F4
-          button
-            background-color: crimson
-            padding: 7px 15px
-            color: #FFF
-            border: none
-            border-radius: 5px
+				.listing-photo
+					width: 50px
+					height: 50px
+				td
+					padding: 2%
+					text-align: center
+				.options
+					display: flex
+					justify-content: space-around
+					align-items: center
+					.details
+						background-color: #03A9F4
+					button
+						background-color: crimson
+						padding: 7px 15px
+						color: #FFF
+						border: none
+						border-radius: 5px
 
 /* Fiche de l'élève */
 .listing-box-plus
-  max-width: 90%
-  margin: auto
-  font-family: sans-serif
-  display: flex
-  justify-content: space-around
+	max-width: 90%
+	margin: auto
+	font-family: sans-serif
+	display: flex
+	justify-content: space-around
 
+	.student-card
+		width: 80%
+		padding: 7% 0
+		.reduce-button
+			button
+				background-color: crimson
+				padding: 7px 15px
+				color: #FFF
+				border: none
+				border-radius: 5px
+		div
+			.view
+				display: flex
+				flex-direction: column
+				border: 3px solid #3F51B5
+				padding: 5%
+				border-radius: 5px
+				.profile-entete
+					min-width: 100%
+					h3
+						text-transform: uppercase
+				.profile
+					display: flex
+					justify-content: space-around
+					border-bottom: 1px solid rosybrown
+				.address
+					border-bottom: 1px solid rosybrown
+				.skills
+					border-bottom: 1px solid rosybrown
+				.social-medias
 
-  .student-card
-    width: 80%
-    padding: 7% 0
-    .reduce-button
-      button
-        background-color: crimson
-        padding: 7px 15px
-        color: #FFF
-        border: none
-        border-radius: 5px
-    div
-      .view
-        display: flex
-        flex-direction: column
-        border: 3px solid #3F51B5
-        padding: 5%
-        border-radius: 5px
-        .profile-entete
-          min-width: 100%
-          h3
-            text-transform: uppercase
-        .profile
-          display: flex
-          justify-content: space-around
-          border-bottom: 1px solid rosybrown
-          .profile-name
-            text-transform: capitalize
-        .address
-          border-bottom: 1px solid rosybrown
-        .skills
-          border-bottom: 1px solid rosybrown
-        .social-medias
+input
+	width: 300px
+	outline: none
+	padding: 10px
+	font-size: 1em
+	border: 1px solid white
+	border-bottom-color: rgba(63, 81, 181, 0.12)
+	&:focus
+		border-bottom-color: rgba(63, 81, 181, 1)
+		box-sizing: border-box
 
 

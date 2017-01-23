@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 	returnUrl: string;
 	// Auto-fill pour le formulaire pendant le dev :<
 	connexion: Object = {
-		loginUser: '',
+		loginUser: 'admin',
 		passwordUser: 'admin'
 	};
 	// gif loading
@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
 						}
 					},
 					error => {
+						this.loading = false;
 						console.log("erreur d'authentification", error)
 					});
 		} else
