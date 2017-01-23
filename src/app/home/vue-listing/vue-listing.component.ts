@@ -23,49 +23,50 @@ import { ListingService } from '../../services/listing.service';
 } )
 export class VueListingComponent implements OnInit {
 
-	students: Student[];
-	activeId: number;
-	student: Student;
 
-	constructor( private listService: ListingService ) {
-	}
+  students: Student[];
+  activeId: number;
+  student: Student[];
 
-	ngOnInit() {
-		this.getStudents();
-	}
 
-	getStudents() {
-		this.listService.getListing()
-			.retry( 3 ) // On retente 3 fois si la requete failed
-			.subscribe(
-				( students ) => {
-					this.students = students;
-					console.log( 'Students', this.students );
-				}
-			)
-	}
+  constructor(private listService: ListingService) { }
 
-	getStudent( id: number ) {
-		this.listService.getStudent( id )
-			.subscribe(
-				( student ) => {
-					this.student = student;
-					console.log( student )
-				}
-			)
-	}
+  ngOnInit() {
+    this.getStudents();
+    console.log('Students',this.students);
+  }
+  // Récupération Listing
+  getStudents(){
+    this.listService.getListing()
+        .retry(3) // On retente 3 fois si la requete failed
+        .subscribe(
+          students => this.students = students
+        )
+  }
+  // Récupération de l'lève
+  getStudent(id:number){
+      this.listService.getStudent(id)
+      .subscribe(
+        student => this.student = student
+      )
+   }
 
-	//Voir la fiche détaillée de l'élève
-	seeMore( id: number ) {
-		if ( id ) {
-			this.activeId = id;
-			this.getStudent( id );
-		}
-	}
 
-	seeLess() {
-		this.activeId = null;
-	}
+
+  //Voir la fiche détaillée de l'élève
+  seeMore(id: number){
+    if(id){
+      this.activeId = id;
+      this.getStudent(id);
+    }
+  }
+
+  // Réduire la fenêtre / revenir à la vue listing
+  seeLess(){
+    this.activeId = null;
+  }
+
+
 
 
 }
