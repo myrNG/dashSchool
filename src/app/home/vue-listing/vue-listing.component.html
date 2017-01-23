@@ -1,90 +1,99 @@
 <!-- Détail de la fiche élève -->
 <div class="listing-box-plus" *ngIf="activeId">
-  <div class="student-card">
-    <div class="reduce-button">
-      <button (click)="seeLess()">Reduire</button>
-    </div>
-    <div *ngFor="let student of students">
-      <div class="view" *ngIf="student.id == activeId">
-        <!-- Profile -->
-        <div class="profile">
-          <div class="profile-photo">
-            <img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo" width="200px"/>
-          </div>
-          <div class="profile-name">
-            <h2>{{student.firstname}} {{student.lastname}}</h2>
-            <p>Né(e) le {{student.birthDate.date | date:"dd/MM/yyyy" }}</p><!-- FIXME format Date -->
-          </div>
-        </div>
-        <!-- Coordonnées -->
-        <div class="address">
-          <div class="profile-entete">
-            <h3>Coordonées</h3>
-          </div>
-          <p>{{student.address}}</p>
-          <p>{{student.phone}}</p>
-          <p>{{student.emergencyContact}}</p>
-          <a href="mailto:{{student.mail}}">{{student.email}}</a>
-        </div>
-        <!-- Skills -->
-        <div class="skills">
-          <div class="profile-entete">
-            <h3>Compétences</h3>
-          </div>
-          <p>Compétences</p>
-          <div>
-            <p>Site : <a href="{{student.personalProject}}" alt="website"></a></p>
-          </div>
-        </div>
-        <!-- Social Medias -->
-        <div class="social-medias">
-          <div class="profile-entete">
-            <h3>Réseaux Sociaux</h3>
-          </div>
-          <p>Github : <a href="{{student.github}}">{{student.github}}</a></p>
-          <p>LinkedIn : <a href="{{student.linkedin}}">{{student.linkedin}}</a></p>
-        </div>
-
-      </div>
-    </div>
-  </div>
+	<div class="student-card">
+		<div class="reduce-button">
+			<button (click)="seeLess()">Reduire</button>
+		</div>
+		<div *ngFor="let student of students">
+			<div class="view" *ngIf="student.id == activeId">
+				<!-- Profile -->
+				<div class="profile">
+					<div class="profile-photo">
+						<img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo" width="200px"/>
+					</div>
+					<div class="profile-name">
+						<h2>{{student.firstname | firstLetterUppercase }} {{student.lastname | firstLetterUppercase
+							}}</h2>
+						<p>Né{{ student.gender == 'female' ? 'e' : '' }} le {{student.birthDate.date | date:"dd/MM/yyyy" }}</p>
+					</div>
+				</div>
+				<!-- Coordonnées -->
+				<div class="address">
+					<div class="profile-entete">
+						<h3>Coordonnées</h3>
+					</div>
+					<!--<p>{{student.address}}</p>-->
+					<!--<p>{{student.phone}}</p>-->
+					<!--<p>{{student.emergencyContact}}</p>-->
+					<!--<p>{{student.email}}</p>-->
+					<label for="address">Adresse : </label>
+					<input type="text" id="address" [(ngModel)]="student.address" (submit)="test($event)"><br><br>
+					<label for="phone">Téléphone : </label>
+					<input type="text" id="phone" [(ngModel)]="student.phone"><br><br>
+					<label for="emergencyContact">Contact en cas d'urgence : </label>
+					<input type="text" id="emergencyContact" [(ngModel)]="student.emergencyContact"><br><br>
+					<label for="email">Mail : </label>
+					<input type="text" id="email" [(ngModel)]="student.email"><br><br>
+				</div>
+				<!-- Skills -->
+				<div class="skills">
+					<div class="profile-entete">
+						<h3>Compétences</h3>
+					</div>
+					<p>Compétences</p>
+					<div>
+						<p>Site : <a href="{{student.personalProject}}" alt="website"></a></p>
+					</div>
+				</div>
+				<!-- Social Medias -->
+				<div class="social-medias">
+					<div class="profile-entete">
+						<h3>Réseaux Sociaux</h3>
+					</div>
+					<p>Github : <a href="{{student.github}}">{{student.github}}</a></p>
+					<p>LinkedIn : <a href="{{student.linkedin}}">{{student.linkedin}}</a></p>
+				</div>
+			
+			</div>
+		</div>
+	</div>
 </div>
 
 
 <!-- Aperçu Listing de la Home -->
 <div class="listing-box" *ngIf="students">
-  <div class="students-finder">
-    <input type="text" placeholder="Rechercher">
-  </div>
-  <table>
-    <thead>
-    <tr>
-      <th></th>
-      <th>Prénom</th>
-      <th>Nom</th>
-      <th>Email</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let student of students" [@flyInOut]="student.state">
-      <td class="listing-photo">
-        <img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo student" width="100px">
-      </td>
-      <td>{{student.firstname | firstLetterUppercase}}</td>
-      <td>{{student.lastname | firstLetterUppercase}}</td>
-      <td><a href="mailto:{{student.email}}">{{student.email}}</a></td>
-      <td class="options">
-        <button class="details" (click)="seeMore(student.id)">{{ "détails" | uppercase }}</button>
-        <button (click)="deleteStudent()">X</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-
-  <div *ngIf="!students">
-    <p>Pas de promo actuellement</p>
-  </div>
+	<div class="students-finder">
+		<input type="text" placeholder="Rechercher">
+	</div>
+	<table>
+		<thead>
+		<tr>
+			<th></th>
+			<th>Prénom</th>
+			<th>Nom</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr *ngFor="let student of students" [@flyInOut]="student.state">
+			<td class="listing-photo">
+				<img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo student" width="100px">
+			</td>
+			<td>{{student.firstname | firstLetterUppercase}}</td>
+			<td>{{student.lastname | firstLetterUppercase}}</td>
+			<td><a href="mailto:{{student.email}}">{{student.email}}</a></td>
+			<td class="options">
+				<button class="details" (click)="seeMore(student.id)">{{ "détails" | uppercase }}</button>
+				<button (click)="deleteStudent()">X</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	
+	<div *ngIf="!students">
+		<p>Pas de promo actuellement</p>
+	</div>
 
 
 </div>
