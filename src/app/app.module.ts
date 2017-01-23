@@ -15,6 +15,7 @@ import {FirstLetterUppercasePipe} from "./pipes/first-letter-uppercase.pipe";
 import {VueListingComponent} from './home/vue-listing/vue-listing.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { DetailStudentComponent } from './home/vue-listing/detail-student/detail-student.component';
 
 @NgModule({
 	declarations: [
@@ -24,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
 		FirstLetterUppercasePipe,
 		VueListingComponent,
 		HeaderComponent,
-		FooterComponent
+		FooterComponent,
+		DetailStudentComponent
 	],
 	imports: [
 		BrowserModule,
