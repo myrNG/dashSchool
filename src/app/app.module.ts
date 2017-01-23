@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddStudentComponent } from './home/add-student/add-student.component';
 import { CustomSearchComponent } from './home/custom-search/custom-search.component';
+import { CustomFilterPipe } from './pipes/custom-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CustomSearchComponent } from './home/custom-search/custom-search.compon
     AddStudentComponent,
     CustomSearchComponent,
     CustomSearchComponent,
+    CustomFilterPipe,
   ],
   imports: [
     BrowserModule,
