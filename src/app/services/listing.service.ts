@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, RequestOptions, Request, RequestMethod} from "@angular/http";
+import {Http, Response} from "@angular/http";
 import 'rxjs/add/operator/map';
 
 import {Observable} from "rxjs";
@@ -12,7 +12,7 @@ export class ListingService {
 
   private listingUrl: string = 'http://raphaeldirago.com/dashSchool/api/web/listing';
   private studentUrl: string = 'http://raphaeldirago.com/dashSchool/api/web/listing/detailStudent/';
-
+  
   students: Observable<Student[]>;
   student: Observable<Student []>;
 
@@ -37,7 +37,6 @@ export class ListingService {
     console.error(error);
     return Observable.throw(error.json().error || 'Server Error');
   }
-  addStudent(){ }
 
   editStudent(){ }
 
