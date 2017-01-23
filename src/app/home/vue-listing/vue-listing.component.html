@@ -60,8 +60,14 @@
 </div>
 
 
+
+
 <!-- Aperçu Listing de la Home -->
 <div class="listing-box" *ngIf="students">
+
+  <div class="students-finder">
+    <input type="text" [(ngModel)]="value" placeholder="Rechercher">
+  </div>
 
   <table>
     <thead>
