@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Student } from "../../models/student";
 import  {VueListingComponent} from "../vue-listing/vue-listing.component";
-import {CustomSearhcService} from '../../services/custom-searhc.service';
-import {CustomFilterPipe} from '../../pipes/custom-filter.pipe';
+import {ListingService} from '../../services/listing.service';
+
 import {Observable} from "rxjs";
 
 @Component({
@@ -14,7 +14,7 @@ import {Observable} from "rxjs";
 })
 export class CustomSearchComponent implements OnInit {
   students: Observable<Student[]>;
-  constructor() { }
+  constructor(private listService: ListingService) { }
 
   ngOnInit() {
   }
