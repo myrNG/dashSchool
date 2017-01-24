@@ -28,5 +28,6 @@ export class AuthentificationService {
 
 	logOut() {
 		localStorage.removeItem('currentUser');
+		this.isAuthentificated = false;
 	}
 }

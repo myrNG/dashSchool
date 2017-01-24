@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../models/user";
-import {Student} from "../models/student";
 import {AuthentificationService} from "../services/authentification.service";
-import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-home',
@@ -12,7 +10,7 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit {
 	currentUser: User;
 
-	constructor() {
+	constructor(private auth: AuthentificationService) {
 	}
 
 	ngOnInit() {
@@ -20,9 +18,8 @@ export class HomeComponent implements OnInit {
 		this.currentUser = new User(userStored.id, userStored.login, userStored.firstname, userStored.lastname);
 		console.log('Accès Home détecté avec user -> ', this.currentUser);
 	}
-
-
-
+	
+	
 }
 
 

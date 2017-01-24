@@ -39,7 +39,7 @@
   </div>
 </header>
 <div>
-  <div class="header-admin">
+  <div class="header-admin" *ngIf="isAuth()">
     <div class="admin-home">
       <h2>Professeur : {{ currentUser.firstname | firstLetterUppercase }}  {{ currentUser.lastname | firstLetterUppercase }}</h2>
     </div>

@@ -3,7 +3,6 @@ import { ListingService } from "../../services/listing.service";
 import { Skill } from "../../models/skill";
 import { Student } from "../../models/student";
 import { Validators, FormBuilder, FormGroup, FormArray, FormControl } from "@angular/forms";
-import { PlatformLocation } from "@angular/common";
 import Any = jasmine.Any;
 import { AddingStudentService } from "../../services/adding-student.service";
 
@@ -15,7 +14,6 @@ import { AddingStudentService } from "../../services/adding-student.service";
 } )
 export class AddStudentComponent implements OnInit {
 	skills: Skill[];
-	newUser: Student;
 	
 	addStudentForm: FormGroup = this.fb.group({
 		gender: ["", Validators.required],
