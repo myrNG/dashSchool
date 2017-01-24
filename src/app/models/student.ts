@@ -11,7 +11,7 @@ export class Student {
 	email: string; // Obligatoire
 	emergencyContact: string;
 	github: string;
-	linkedin: string;
+	linkedIn: string;
 	personalProject: string;
 	photo: string;
 	gender: string; // Obligatoire

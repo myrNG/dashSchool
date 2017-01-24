@@ -37,10 +37,6 @@ export class ListingService {
     console.error(error);
     return Observable.throw(error.json().error || 'Server Error');
   }
-
-  editStudent(){ }
-
-  deleteStudent(){}
 }
 
 
