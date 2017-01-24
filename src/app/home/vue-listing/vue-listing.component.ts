@@ -3,12 +3,12 @@ import { Student } from "../../models/student";
 import { Skill } from "../../models/skill";
 import { ListingService } from '../../services/listing.service';
 import {CustomFilterPipe} from '../../pipes/custom-filter.pipe';
+import { CustomSearchComponent} from '../custom-search/custom-search.component';
 
 @Component( {
   selector: 'app-vue-listing',
   templateUrl: './vue-listing.component.html',
   styleUrls: [ './vue-listing.component.sass' ],
-  providers: [ ListingService ],
   animations: [
     trigger( 'flyInOut', [
       state( 'in', style( { transform: 'translateX(0)' } ) ),
