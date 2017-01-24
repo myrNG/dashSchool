@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../models/user";
 import {AuthentificationService} from "../services/authentification.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: 'app-home',
@@ -10,7 +11,7 @@ import {AuthentificationService} from "../services/authentification.service";
 export class HomeComponent implements OnInit {
 	currentUser: User;
 
-	constructor(private auth: AuthentificationService) {
+	constructor(private auth: AuthentificationService, private router: Router) {
 	}
 
 	ngOnInit() {
@@ -19,6 +20,11 @@ export class HomeComponent implements OnInit {
 		console.log('Accès Home détecté avec user -> ', this.currentUser);
 	}
 	
+	disconnectMe() {
+		console.log('Déconnexion en cours...');
+		this.auth.logOut();
+		this.router.navigate(['/login']);
+	}
 	
 }
 
