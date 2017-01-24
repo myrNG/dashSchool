@@ -22,33 +22,33 @@ import { CustomFilterPipe } from './pipes/custom-filter.pipe';
 
 
 @NgModule( {
-	declarations: [
-		AppComponent,
-		LoginComponent,
-		HomeComponent,
-		FirstLetterUppercasePipe,
-		VueListingComponent,
-		HeaderComponent,
-		FooterComponent,
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    FirstLetterUppercasePipe,
+    VueListingComponent,
+    HeaderComponent,
+    FooterComponent,
     CustomSearchComponent,
     CustomSearchComponent,
     CustomFilterPipe,
-		AddStudentComponent,
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		routing,
-		ReactiveFormsModule
-	],
-	providers: [
-		AuthGuard,
-		AuthentificationService,
-		ListingService
+    AddStudentComponent,
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    routing,
+    ReactiveFormsModule
+  ],
+  providers: [
+    AuthGuard,
+    AuthentificationService,
+    ListingService
 
-	],
-	bootstrap: [ AppComponent ]
+  ],
+  bootstrap: [ AppComponent ]
 } )
 
 export class AppModule {

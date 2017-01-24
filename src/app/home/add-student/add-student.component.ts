@@ -67,7 +67,8 @@ export class AddStudentComponent implements OnInit {
 		let selectedSkills = Object.keys(objectSkills)
 			.filter((key, index) => {
 				 if (objectSkills[key] == true ) return key
-			});
+			})
+			.map((key) => parseInt(key));
 		this.addingService.addStudent(this.addStudentForm.value, selectedSkills)
 			.subscribe(
 				data => {

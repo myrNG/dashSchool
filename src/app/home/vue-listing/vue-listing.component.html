@@ -39,8 +39,10 @@
         <div class="skills">
           <div class="profile-entete">
             <h3>Compétences</h3>
+            <div class="skills-details" *ngFor="let skills of student.skill">
+              <p>{{skills}}</p>
+            </div>
           </div>
-          <p>Compétences</p>
           <div>
             <p>Site : <a href="{{student.personalProject}}" alt="website"></a></p>
           </div>
@@ -65,39 +67,41 @@
 <!-- Aperçu Listing de la Home -->
 <div class="listing-box" *ngIf="students">
 
-	<div class="students-finder">
-		<input type="text" [(ngModel)]="value" placeholder="Rechercher">
-	</div>
-	<table>
-		<thead>
-		<tr>
-			<th></th>
-			<th>Prénom</th>
-			<th>Nom</th>
-			<th>Email</th>
-			<th><a routerLink="/add" class="add">+</a></th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr *ngFor="let student of students | customFilter: value" [@flyInOut]="student.state" [@flyInOut]="student.state">
-			<td class="listing-photo">
-				<img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo student" width="100px">
-			</td>
-			<td>{{student.firstname | firstLetterUppercase}}</td>
-			<td>{{student.lastname | firstLetterUppercase}}</td>
-			<td><a href="mailto:{{student.email}}">{{student.email}}</a></td>
-			<td class="options">
-				<button class="details" (click)="seeMore(student.id)">{{ "détails" | uppercase }}</button>
-				<button (click)="deleteStudent()">X</button>
-			</td>
-		</tr>
-		</tbody>
-	</table>
+  <div class="students-finder">
+    <input type="text" [(ngModel)]="value" placeholder="Rechercher">
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th></th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th><a routerLink="/add" class="add">+</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students | customFilter: value" [@flyInOut]="student.state" [@flyInOut]="student.state">
+      <td class="listing-photo">
+        <img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo student" width="100px">
+      </td>
+      <td>{{student.firstname | firstLetterUppercase}}</td>
+      <td>{{student.lastname | firstLetterUppercase}}</td>
+      <td><a href="mailto:{{student.email}}">{{student.email}}</a></td>
+      <td class="options">
+        <button class="details" (click)="seeMore(student.id)">{{ "détails" | uppercase }}</button>
+        <button (click)="deleteStudent()">X</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
-	<div *ngIf="!students">
-		<p>Pas de promo actuellement</p>
-	</div>
+  <div *ngIf="!students">
+    <p>Pas de promo actuellement</p>
+  </div>
 
 
 
 </div>
+
+
