@@ -40,9 +40,11 @@
           <div class="profile-entete">
             <h3>Compétences</h3>
           </div>
-          <p>Compétences</p>
+          <div class="skills-details" *ngFor="let skills of student.skill">
+            <p>{{skills}}</p>
+          </div>
           <div>
-            <p>Site : <a href="{{student.personalProject}}" alt="website"></a></p>
+            <p>Site : <a href="{{student.personalProject}}" alt="website">{{student.personalProject}}</a></p>
           </div>
         </div>
         <!-- Social Medias -->

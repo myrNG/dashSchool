@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, trigger, state, style, transition, animate } from '@angular/core';
 import { Student } from "../../models/student";
+import { Skill } from "../../models/skill";
 import { ListingService } from '../../services/listing.service';
 import {CustomFilterPipe} from '../../pipes/custom-filter.pipe';
 
@@ -27,6 +28,7 @@ export class VueListingComponent implements OnInit {
 
   students: Student[];
   activeId: number;
+  skills: Skill[];
   @Input() student: Student;
 
   constructor( private listService: ListingService ) {
