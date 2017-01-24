@@ -80,7 +80,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let student of students" [@flyInOut]="student.state">
+    <tr *ngFor="let student of students | customFilter: value" [@flyInOut]="student.state">
       <td class="listing-photo">
         <img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo student" width="100px">
       </td>
