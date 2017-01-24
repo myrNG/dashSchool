@@ -16,32 +16,40 @@ import { VueListingComponent } from './home/vue-listing/vue-listing.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddStudentComponent } from './home/add-student/add-student.component';
+import { CustomSearchComponent } from './home/custom-search/custom-search.component';
+import { CustomFilterPipe } from './pipes/custom-filter.pipe';
+
+
 
 @NgModule( {
-	declarations: [
-		AppComponent,
-		LoginComponent,
-		HomeComponent,
-		FirstLetterUppercasePipe,
-		VueListingComponent,
-		HeaderComponent,
-		FooterComponent,
-		AddStudentComponent,
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		routing,
-		ReactiveFormsModule
-	],
-	providers: [
-		AuthGuard,
-		AuthentificationService,
-		ListingService
-	
-	],
-	bootstrap: [ AppComponent ]
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    FirstLetterUppercasePipe,
+    VueListingComponent,
+    HeaderComponent,
+    FooterComponent,
+    CustomSearchComponent,
+    CustomSearchComponent,
+    CustomFilterPipe,
+    AddStudentComponent,
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    routing,
+    ReactiveFormsModule
+  ],
+  providers: [
+    AuthGuard,
+    AuthentificationService,
+    ListingService
+
+  ],
+  bootstrap: [ AppComponent ]
 } )
+
 export class AppModule {
 }
