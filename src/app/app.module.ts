@@ -31,7 +31,6 @@ import { CustomFilterPipe } from './pipes/custom-filter.pipe';
     HeaderComponent,
     FooterComponent,
     CustomSearchComponent,
-    CustomSearchComponent,
     CustomFilterPipe,
     AddStudentComponent,
   ],
