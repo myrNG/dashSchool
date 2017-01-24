@@ -16,46 +16,59 @@ import { AddingStudentService } from "../../services/adding-student.service";
 export class AddStudentComponent implements OnInit {
 	skills: Skill[];
 	newUser: Student;
-	addStudentForm: FormGroup;
+	
+	addStudentForm: FormGroup = this.fb.group({
+		gender: ["", Validators.required],
+		firstname: ["", Validators.required],
+		lastname: ["", Validators.required],
+		birthdate: ["", Validators.required],
+		address: ["", Validators.required],
+		phone: ["", Validators.required],
+		email: ["", Validators.required],
+		emergencyContact: [""],
+		github: [""],
+		linkedin: [""],
+		personalProject: [""],
+		photo: [""],
+		skills: this.fb.group({
+			1: false,
+			2: false,
+			3: false,
+			4: false,
+			5: false,
+			6: false,
+			7: false,
+			8: false,
+			9: false,
+			10: false,
+			11: false,
+			12: false,
+			13: false,
+			14: false,
+			15: false,
+			16: false,
+			17: false,
+			18: false,
+			19: false,
+			20: false
+		})
+	});
 	
 	constructor( private listService: ListingService, private addingService: AddingStudentService, public fb: FormBuilder ) {
-	}
-	
-	initForm() {
-		//let allSkills: FormArray = new FormArray([]);
-		//for (let i = 0; i < this.skills.length; i++) {
-		//	let fg = new FormGroup({});
-		//	fg.addControl(this.skills[i].id.toString(), new FormControl(false))
-		//	allSkills.push(fg)
-		//}
-		//
-		//console.log(allSkills);
-		
-		this.addStudentForm = this.fb.group({
-			gender: ["", Validators.required],
-			firstname: ["", Validators.required],
-			lastname: ["", Validators.required],
-			birthdate: ["", Validators.required],
-			address: ["", Validators.required],
-			phone: ["", Validators.required],
-			email: ["", Validators.required],
-			emergencyContact: [""],
-			github: [""],
-			linkedin: [""],
-			personalProject: [""],
-			photo: [""],
-			//skills: allSkills
-		})
 	}
 	
 	ngOnInit() {
 		this.getSkills();
 	}
 	
-	test(event) {
+	onSubmit(event) {
 		event.preventDefault();
-		console.log(this.addStudentForm.value);
-		this.addingService.addStudent(this.addStudentForm.value)
+		let objectSkills = this.addStudentForm.value.skills;
+		let selectedSkills = Object.keys(objectSkills)
+			.filter((key, index) => {
+				 if (objectSkills[key] == true ) return key
+			});
+		this.addingService.addStudent(this.addStudentForm.value, selectedSkills)
 			.subscribe(
 				data => {
 					console.log("Réponse serveur OK");
@@ -78,7 +91,6 @@ export class AddStudentComponent implements OnInit {
 				( items ) => {
 					this.skills = items[0].availableSkills;
 					console.log( 'Skills', this.skills );
-					this.initForm();
 				}
 			)
 	}

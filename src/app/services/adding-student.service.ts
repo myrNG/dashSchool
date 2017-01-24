@@ -10,9 +10,9 @@ export class AddingStudentService {
 	constructor( private http: Http) {
 	}
 	
-	addStudent( newUser ) {
+	addStudent( newUser, skills ) {
 		console.log( "tentative d'ajout de l'user -> ", newUser );
-		console.log( "tentative d'ajout de l'user(JSON.stringify) -> ", JSON.stringify( { newUser } ) );
+		console.log( "skills passés au service -> ", skills );
 		return this.http.post( this.addingUrl, JSON.stringify( {
 			gender: newUser.gender,
 			firstname: newUser.firstname,
@@ -25,7 +25,8 @@ export class AddingStudentService {
 			github: newUser.github,
 			linkedin: newUser.linkedin,
 			personalProject: newUser.personalProject,
-			photo: newUser.photo
+			photo: newUser.photo,
+			skills: skills
 		} ) )
 			.map( ( response: Response ) => {
 				let user = response.json();

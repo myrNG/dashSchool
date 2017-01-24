@@ -6,7 +6,7 @@
 		</div>
 	</div>
 	
-	<form *ngIf="skills" class="form" [formGroup]="addStudentForm" (ngSubmit)="test($event)">
+	<form *ngIf="skills" class="form" [formGroup]="addStudentForm" (ngSubmit)="onSubmit($event)">
 		<div class="form-group">
 			<label for="gender">Vous êtes un(e) : </label>
 			<input type="radio" formControlName="gender" value="male" checked class="">Homme
@@ -56,12 +56,12 @@
 			<label for="photo">Photo : </label>
 			<input type="text" formControlName="photo" class="" id="photo">
 		</div>
-		<!--<div class="form-group" formArrayName="skills">-->
-			<!--<label>Compétences</label>-->
-			<!--<div *ngFor="let skill of skills">-->
-				<!--<input type="checkbox" name="{{skill.name}}" formControlName="{{skill.id}}">{{skill.name}}<br>-->
-			<!--</div>-->
-		<!--</div>-->
+		<div class="form-group" formGroupName="skills">
+			<label>Compétences</label>
+			<div *ngFor="let skill of skills">
+				<input type="checkbox" name="{{skill.name}}" [formControlName]="skill.id">{{skill.name}}<br>
+			</div>
+		</div>
 		<button>VALIDER</button>
 	</form>
 </div>
