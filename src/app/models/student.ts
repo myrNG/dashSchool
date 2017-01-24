@@ -1,19 +1,21 @@
+import { Skill } from "./skill";
 export class Student {
 	id: number;
-	firstname: string;
-	lastname: string;
-	birthDate: Object = {
+	firstname: string;  // Obligatoire
+	lastname: string; // Obligatoire
+	birthDate: Object = { // Obligatoire
 		date: null
 	};
-	address: string;
-	phone: string;
-	email: string;
+	address: string; // Obligatoire
+	phone: string; // Obligatoire
+	email: string; // Obligatoire
 	emergencyContact: string;
 	github: string;
 	linkedin: string;
 	personalProject: string;
 	photo: string;
-	gender: string;
+	gender: string; // Obligatoire
+	skills: Skill[];
 	// il manque la specialisation!
 }
 

@@ -68,7 +68,6 @@
   <div class="students-finder">
     <input type="text" [(ngModel)]="value" placeholder="Rechercher">
   </div>
-
   <table>
     <thead>
     <tr>
@@ -76,11 +75,11 @@
       <th>Prénom</th>
       <th>Nom</th>
       <th>Email</th>
-      <th></th>
+      <th><a routerLink="/add" class="add">+</a></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let student of students | customFilter: value" [@flyInOut]="student.state">
+    <tr *ngFor="let student of students | customFilter: value" [@flyInOut]="student.state" [@flyInOut]="student.state">
       <td class="listing-photo">
         <img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo student" width="100px">
       </td>
@@ -98,6 +97,7 @@
   <div *ngIf="!students">
     <p>Pas de promo actuellement</p>
   </div>
+
 
 
 </div>
