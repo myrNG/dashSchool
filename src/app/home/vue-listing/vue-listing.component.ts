@@ -2,8 +2,8 @@ import { Component, OnInit, Input, trigger, state, style, transition, animate } 
 import { Student } from "../../models/student";
 import { Skill } from "../../models/skill";
 import { ListingService } from '../../services/listing.service';
-import {CustomFilterPipe} from '../../pipes/custom-filter.pipe';
-import { CustomSearchComponent} from '../custom-search/custom-search.component';
+import {CustomFilterPipe} from "../../pipes/custom-filter.pipe";
+
 
 @Component( {
   selector: 'app-vue-listing',

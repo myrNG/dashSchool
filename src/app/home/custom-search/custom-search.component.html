@@ -1,5 +1,5 @@
-<form id="customFilter">
+<form id="customFilter" [formGroup]="searchStudent">
   <div class="searchMe">
-    <input [(ngModel)]="value" type="text" placeholder="Rechercher">
+    <input [(ngModel)]="value" formControlName="search" type="text" placeholder="Rechercher">
   </div>
 </form>
