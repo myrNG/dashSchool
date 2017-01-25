@@ -9,7 +9,7 @@ export class DeletingStudentService {
 	}
 	
 	deleteStudent( id: number ) {
-		return this.http.delete( this.deletingURL + id )
+		return this.http.get( this.deletingURL + id )
 			.map( (response: Response) => {
 				let resp = response.json();
 				console.log('server response', resp);

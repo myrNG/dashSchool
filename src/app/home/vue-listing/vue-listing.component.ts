@@ -37,14 +37,17 @@ export class VueListingComponent implements OnInit {
 		id: new FormControl(),
 		firstname: new FormControl(),
 		lastname: new FormControl(),
-		birthdate: new FormControl(),
+		birthDate: new FormControl(),
 		address: new FormControl(),
 		phone: new FormControl(),
 		email: new FormControl(),
 		emergencyContact: new FormControl(),
 		github: new FormControl(),
 		linkedin: new FormControl(),
-		personalProject: new FormControl()
+		personalProject: new FormControl(),
+		//skills: new FormGroup(
+		//	1:
+		//)
 	} );
 
 	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService ) {

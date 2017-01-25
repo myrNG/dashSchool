@@ -17,7 +17,7 @@ export class AddingStudentService {
 			gender: newUser.gender,
 			firstname: newUser.firstname,
 			lastname: newUser.lastname,
-			birthdate: newUser.birthdate,
+			birthDate: newUser.birthDate,
 			address: newUser.address,
 			phone: newUser.phone,
 			email: newUser.email,
