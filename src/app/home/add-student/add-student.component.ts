@@ -19,7 +19,7 @@ export class AddStudentComponent implements OnInit {
 		gender: ["", Validators.required],
 		firstname: ["", Validators.required],
 		lastname: ["", Validators.required],
-		birthdate: ["", Validators.required],
+		birthDate: ["", Validators.required],
 		address: ["", Validators.required],
 		phone: ["", Validators.required],
 		email: ["", Validators.required],
@@ -63,10 +63,11 @@ export class AddStudentComponent implements OnInit {
 		event.preventDefault();
 		let objectSkills = this.addStudentForm.value.skills;
 		let selectedSkills = Object.keys(objectSkills)
-			.filter((key, index) => {
+			.filter((key) => {
 				 if (objectSkills[key] == true ) return key
 			})
 			.map((key) => parseInt(key));
+		console.log("tentative d'ajout d'un élève -> ", this.addStudentForm.value);
 		this.addingService.addStudent(this.addStudentForm.value, selectedSkills)
 			.subscribe(
 				data => {

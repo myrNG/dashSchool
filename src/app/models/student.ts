@@ -16,6 +16,6 @@ export class Student {
 	photo: string;
 	gender: string; // Obligatoire
 	skills: Skill[];
-	// il manque la specialisation!
+	availableSkills: Skill[];
 }
 
