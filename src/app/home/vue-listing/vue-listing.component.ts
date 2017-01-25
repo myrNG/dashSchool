@@ -32,6 +32,7 @@ export class VueListingComponent implements OnInit {
 	activeId: number;
 	skills: Skill[];
 	student: Student;
+	currentStudent: number = 1;
 
 	editForm = new FormGroup( {
 		id: new FormControl(),
@@ -114,9 +115,12 @@ export class VueListingComponent implements OnInit {
 				})
 		}
 	}
-	// Event emitter for binding filter
-	filterOutput(e){
-    console.log(e);
-  }
+	previousStudent(){
+
+	}
+	nextStudent(){
+
+	}
+
 
 }
