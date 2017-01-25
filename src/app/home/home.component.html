@@ -1,5 +1,12 @@
+<div>
+  <div class="header-admin">
+    <div class="admin-home">
+      <h2>Professeur : {{ currentUser.firstname | firstLetterUppercase }}  {{ currentUser.lastname | firstLetterUppercase }}</h2>
+    </div>
+    <div class="logout"><button (click)="disconnectMe()">Log out</button></div>
+  </div>
+</div>
 <app-custom-search></app-custom-search>
 <router-outlet></router-outlet>
 <app-vue-listing></app-vue-listing>
-
 
