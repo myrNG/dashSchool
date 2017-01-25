@@ -24,15 +24,15 @@ import { DeletingStudentService } from "../../services/deleting-student.service"
 			] )
 		] )
 	]
-	
+
 } )
 export class VueListingComponent implements OnInit {
-	
+
 	students: Student[];
 	activeId: number;
 	skills: Skill[];
 	student: Student;
-	
+
 	editForm = new FormGroup( {
 		id: new FormControl(),
 		firstname: new FormControl(),
@@ -46,14 +46,14 @@ export class VueListingComponent implements OnInit {
 		linkedin: new FormControl(),
 		personalProject: new FormControl()
 	} );
-	
+
 	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService ) {
 	}
-	
+
 	ngOnInit() {
 		this.getStudents();
 	}
-	
+
 	/**
 	 * Fonction appelée par le formulaire d'édition
 	 * qui utilise le two-way binding
@@ -66,7 +66,7 @@ export class VueListingComponent implements OnInit {
 					console.log(message);
 				})
 	}
-	
+
 	/**
 	 * Récupère les étudiants en BDD
 	 */
@@ -80,7 +80,7 @@ export class VueListingComponent implements OnInit {
 				}
 			)
 	}
-	
+
 	getStudent( id: number ) {
 		this.listService.getStudent( id )
 			.subscribe(
@@ -90,7 +90,7 @@ export class VueListingComponent implements OnInit {
 				}
 			)
 	}
-	
+
 	//Voir la fiche détaillée de l'élève
 	seeMore( id: number ) {
 		if ( id ) {
@@ -98,11 +98,11 @@ export class VueListingComponent implements OnInit {
 			this.getStudent( id );
 		}
 	}
-	
+
 	seeLess() {
 		this.activeId = null;
 	}
-	
+
 	deleteStudent( id ) {
 		console.log( 'tentative de suppression de student' );
 		let ok = confirm('Vous êtes sur le point de supprimer un élève, êtes-vous sûr(e) ?');
@@ -114,5 +114,5 @@ export class VueListingComponent implements OnInit {
 				})
 		}
 	}
-	
+
 }
