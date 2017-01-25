@@ -114,5 +114,9 @@ export class VueListingComponent implements OnInit {
 				})
 		}
 	}
+	// Event emitter for binding filter
+	filterOutput(e){
+    console.log(e);
+  }
 
 }
