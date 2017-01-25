@@ -63,7 +63,7 @@ export class AddStudentComponent implements OnInit {
 		event.preventDefault();
 		let objectSkills = this.addStudentForm.value.skills;
 		let selectedSkills = Object.keys(objectSkills)
-			.filter((key, index) => {
+			.filter((key) => {
 				 if (objectSkills[key] == true ) return key
 			})
 			.map((key) => parseInt(key));

@@ -49,12 +49,11 @@
 								<p>{{skill}}</p>
 							</div>
 							<div class="skills-available" formGroupName="skills" *ngFor="let avSkill of student.availableSkills">
-								<input type="checkbox" [checked]="isAlready($event)" [formControlName]="avSkill.id" name="{{avSkill.name}}">{{avSkill.name}}
+								<input #ck type="checkbox" [checked]="isAlreadyChosen(avSkill.name, student)" [formControlName]="avSkill.id" name="{{avSkill.name}}">{{avSkill.name}}
 							</div>
 						</div>
 						<div>
-							<p>Site : <input class="input input-wide" type="text" [(ngModel)]="student.personalProject"
-							                 formControlName="personalProject"></p>
+							<p>Site : <input class="input input-wide" type="text" [(ngModel)]="student.personalProject" formControlName="personalProject"></p>
 						</div>
 					</div>
 					<!-- Social Medias -->

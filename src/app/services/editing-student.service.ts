@@ -8,8 +8,20 @@ export class EditingStudentService {
 	constructor( private http: Http ) {
 	}
 	
-	updateStudent( id: number, values: Object ) {
-		return this.http.post( this.editingURL + id, JSON.stringify( values ) )
+	updateStudent( id: number, values, skills: number[] ) {
+		return this.http.post( this.editingURL + id, JSON.stringify({
+			firstname: values.firstname,
+			lastname: values.lastname,
+			birthDate: values.birthDate,
+			address: values.address,
+			phone: values.phone,
+			email: values.email,
+			emergencyContact: values.emergencyContact,
+			github: values.github,
+			linkedin: values.linkedin,
+			personalProject: values.personalProject,
+			skills: skills
+		}) )
 			.map( ( response: Response ) => {
 				let resp = response.json();
 				console.log('server response', resp);

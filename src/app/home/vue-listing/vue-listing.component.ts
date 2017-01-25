@@ -24,71 +24,95 @@ import { DeletingStudentService } from "../../services/deleting-student.service"
 			] )
 		] )
 	]
-
+	
 } )
 export class VueListingComponent implements OnInit {
-
+	
 	students: Student[];
 	activeId: number;
 	skills: Skill[];
 	student: Student;
 	
-	editForm: FormGroup = this.fb.group({
-		id: ["", Validators.required],
-		firstname: ["", Validators.required],
-		lastname: ["", Validators.required],
-		birthDate: ["", Validators.required],
-		address: ["", Validators.required],
-		phone: ["", Validators.required],
-		email: ["", Validators.required],
-		emergencyContact: [""],
-		github: [""],
-		linkedin: [""],
-		personalProject: [""],
-		skills: this.fb.group({
-			1: false,
-			2: false,
-			3: false,
-			4: false,
-			5: false,
-			6: false,
-			7: false,
-			8: false,
-			9: false,
-			10: false,
-			11: false,
-			12: false,
-			13: false,
-			14: false,
-			15: false,
-			16: false,
-			17: false,
-			18: false,
-			19: false,
-			20: false
-		})
-	});
-
+	editForm: FormGroup = this.fb.group( {
+		id: [ "", Validators.required ],
+		firstname: [ "", Validators.required ],
+		lastname: [ "", Validators.required ],
+		birthDate: [ "", Validators.required ],
+		address: [ "", Validators.required ],
+		phone: [ "", Validators.required ],
+		email: [ "", Validators.required ],
+		emergencyContact: [ "" ],
+		github: [ "" ],
+		linkedin: [ "" ],
+		personalProject: [ "" ],
+		skills: this.fb.group( {
+			1: '',
+			2: '',
+			3: '',
+			4: '',
+			5: '',
+			6: '',
+			7: '',
+			8: '',
+			9: '',
+			10: '',
+			11: '',
+			12: '',
+			13: '',
+			14: '',
+			15: '',
+			16: '',
+			17: '',
+			18: '',
+			19: '',
+			20: ''
+		} )
+	} );
+	
 	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService, private fb: FormBuilder ) {
 	}
-
+	
 	ngOnInit() {
 		this.getStudents();
 	}
-
+	/**
+	 * On checke si l'id de la compétence passée en paramètre
+	 * matche avec une compétence de l'élève
+	 * @param skillName
+	 * @param student
+	 * @returns {boolean}
+	 */
+	isAlreadyChosen( skillName, student ) {
+		for ( let i = 0; i < student.skills.length; i++ ) {
+			if ( skillName == student.skills[ i ] ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	isAlreadyChosenForm(){
+		
+	}
+	
 	/**
 	 * Fonction appelée par le formulaire d'édition
 	 * qui utilise le two-way binding
 	 */
 	onEdit() {
-		console.log( " tentative d'édition d'élève " );
-		this.editService.updateStudent( this.editForm.value.id, this.editForm.value )
+		let objectSkills = this.editForm.value.skills;
+		let selectedSkills = Object.keys(objectSkills)
+			.filter((key) => { if (objectSkills[key] == true ) return key })
+			.map((key) => parseInt(key));
+		console.log( " tentative d'édition d'élève avec values -> ", this.editForm.value );
+		console.log( " tentative d'édition d'élève avec skills -> ", selectedSkills );
+		this.editService.updateStudent( this.editForm.value.id, this.editForm.value, selectedSkills )
 			.subscribe(
-				(message) => {
-					console.log(message);
-				})
+				( message ) => {
+					console.log( message );
+				} )
 	}
-
+	
 	/**
 	 * Récupère les étudiants en BDD
 	 */
@@ -102,7 +126,7 @@ export class VueListingComponent implements OnInit {
 				}
 			)
 	}
-
+	
 	getStudent( id: number ) {
 		this.listService.getStudent( id )
 			.subscribe(
@@ -112,7 +136,7 @@ export class VueListingComponent implements OnInit {
 				}
 			)
 	}
-
+	
 	//Voir la fiche détaillée de l'élève
 	seeMore( id: number ) {
 		if ( id ) {
@@ -120,21 +144,21 @@ export class VueListingComponent implements OnInit {
 			this.getStudent( id );
 		}
 	}
-
+	
 	seeLess() {
 		this.activeId = null;
 	}
-
+	
 	deleteStudent( id ) {
 		console.log( 'tentative de suppression de student' );
-		let ok = confirm('Vous êtes sur le point de supprimer un élève, êtes-vous sûr(e) ?');
-		if (ok) {
-			this.deletingService.deleteStudent(id)
+		let ok = confirm( 'Vous êtes sur le point de supprimer un élève, êtes-vous sûr(e) ?' );
+		if ( ok ) {
+			this.deletingService.deleteStudent( id )
 				.subscribe(
-					(message) => {
-						console.log(message);
-				})
+					( message ) => {
+						console.log( message );
+					} )
 		}
 	}
-
+	
 }
