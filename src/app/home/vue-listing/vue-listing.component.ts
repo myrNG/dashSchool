@@ -3,7 +3,7 @@ import { Student } from "../../models/student";
 import { Skill } from "../../models/skill";
 import { ListingService } from '../../services/listing.service';
 import { CustomFilterPipe } from '../../pipes/custom-filter.pipe';
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
 import { EditingStudentService } from "../../services/editing-student.service";
 import { DeletingStudentService } from "../../services/deleting-student.service";
 
@@ -32,25 +32,44 @@ export class VueListingComponent implements OnInit {
 	activeId: number;
 	skills: Skill[];
 	student: Student;
+	
+	editForm: FormGroup = this.fb.group({
+		id: ["", Validators.required],
+		firstname: ["", Validators.required],
+		lastname: ["", Validators.required],
+		birthDate: ["", Validators.required],
+		address: ["", Validators.required],
+		phone: ["", Validators.required],
+		email: ["", Validators.required],
+		emergencyContact: [""],
+		github: [""],
+		linkedin: [""],
+		personalProject: [""],
+		skills: this.fb.group({
+			1: false,
+			2: false,
+			3: false,
+			4: false,
+			5: false,
+			6: false,
+			7: false,
+			8: false,
+			9: false,
+			10: false,
+			11: false,
+			12: false,
+			13: false,
+			14: false,
+			15: false,
+			16: false,
+			17: false,
+			18: false,
+			19: false,
+			20: false
+		})
+	});
 
-	editForm = new FormGroup( {
-		id: new FormControl(),
-		firstname: new FormControl(),
-		lastname: new FormControl(),
-		birthDate: new FormControl(),
-		address: new FormControl(),
-		phone: new FormControl(),
-		email: new FormControl(),
-		emergencyContact: new FormControl(),
-		github: new FormControl(),
-		linkedin: new FormControl(),
-		personalProject: new FormControl(),
-		//skills: new FormGroup(
-		//	1:
-		//)
-	} );
-
-	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService ) {
+	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService, private fb: FormBuilder ) {
 	}
 
 	ngOnInit() {

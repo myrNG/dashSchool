@@ -44,10 +44,12 @@
 					<!-- Skills -->
 					<div class="skills">
 						<div class="profile-entete">
-							<h3>Compétences</h3>
-							<div class="skills-details" *ngFor="skill in student.skill">
-								<!--<p>{{skills}}</p>-->
-								<input type="checkbox" [(ngModel)]="skills">
+							<h3>Compétences acquises</h3>
+							<div class="skills-details" *ngFor="let skill of student.skills">
+								<p>{{skill}}</p>
+							</div>
+							<div class="skills-available" formGroupName="skills" *ngFor="let avSkill of student.availableSkills">
+								<input type="checkbox" [checked]="isAlreadyChosen($event)" [formControlName]="avSkill.id" name="{{avSkill.name}}">{{avSkill.name}}
 							</div>
 						</div>
 						<div>
