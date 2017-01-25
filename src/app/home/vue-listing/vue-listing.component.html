@@ -24,7 +24,7 @@
 							<input type="hidden" [(ngModel)]="student.id" formControlName="id">
 							<input class="input" type="text" [(ngModel)]="student.firstname" formControlName="firstname">
 							<input class="input" type="text" [(ngModel)]="student.lastname" formControlName="lastname">
-							<p>Né{{ student.gender == 'female' ? 'e' : '' }} le <input type="date" [(ngModel)]="student.birthDate.date" formControlName="birthdate"></p>
+							<p>Né{{ student.gender == 'female' ? 'e' : '' }} le <input type="date" [(ngModel)]="student.birthDate.date" formControlName="birthDate"></p>
 						</div>
 						<div class="profile-photo">
 							<img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo" width="200px"/>
