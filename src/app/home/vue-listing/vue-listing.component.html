@@ -74,8 +74,8 @@
 
 <!-- Aperçu Listing de la Home -->
 <div class="listing-box" *ngIf="students">
-  <!-- FIXME Test! -->
-  <app-custom-search [students]="students"></app-custom-search>
+
+  <!--<app-custom-search [students]="students"></app-custom-search>-->
 
   <div class="students-finder">
     <input type="text" [(ngModel)]="value" placeholder="Rechercher" (onFilter)="filterOutput($event)">

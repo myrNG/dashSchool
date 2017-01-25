@@ -9,8 +9,8 @@
 	<form *ngIf="skills" class="form" [formGroup]="addStudentForm" (ngSubmit)="onSubmit($event)">
 		<div class="form-group">
 			<label for="gender">Vous êtes un(e) : </label>
-			<input #male type="radio" formControlName="gender" value="male" class="">Homme
-			<input #female type="radio" formControlName="gender" value="female" class="">Femme
+			<input #male type="radio" formControlName="gender" value="male" class="gender">Homme
+			<input #female type="radio" formControlName="gender" value="female" class="gender">Femme
 		</div>
 		<div class="form-group">
 			<label for="lastname">Nom : </label>
@@ -58,8 +58,10 @@
 		</div>
 		<div class="form-group" formGroupName="skills">
 			<label>Compétences</label>
-			<div class="skills" *ngFor="let skill of skills">
-				<input type="checkbox" name="{{skill.name}}" [formControlName]="skill.id" class="check-skills">{{skill.name}}<br>
+			<div class="skills-group">
+				<div class="skills" *ngFor="let skill of skills">
+					<input type="checkbox" name="{{skill.name}}" [formControlName]="skill.id" class="check-skills">{{skill.name}}<br>
+				</div>
 			</div>
 		</div>
 		<button class="validate">VALIDER</button>
