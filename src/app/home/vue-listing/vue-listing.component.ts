@@ -166,6 +166,7 @@ export class VueListingComponent implements OnInit {
 	
 	//Voir la fiche détaillée de l'élève
 	seeMore( id: number ) {
+		this.activeId = null;
 		if ( id ) {
 			this.activeId = id;
 			this.getStudent( id );
