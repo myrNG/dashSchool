@@ -3,9 +3,7 @@ export class Student {
 	id: number;
 	firstname: string;  // Obligatoire
 	lastname: string; // Obligatoire
-	birthDate: Object = { // Obligatoire
-		date: null
-	};
+	birthDate;
 	address: string; // Obligatoire
 	phone: string; // Obligatoire
 	email: string; // Obligatoire
@@ -15,7 +13,7 @@ export class Student {
 	personalProject: string;
 	photo: string;
 	gender: string; // Obligatoire
-	skills: Skill[];
+	skills;
 	availableSkills: Skill[];
 }
 
