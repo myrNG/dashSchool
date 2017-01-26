@@ -3,7 +3,7 @@ import { Student } from "../../models/student";
 import { Skill } from "../../models/skill";
 import { ListingService } from '../../services/listing.service';
 import { CustomFilterPipe } from '../../pipes/custom-filter.pipe';
-import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from "@angular/forms";
 import { EditingStudentService } from "../../services/editing-student.service";
 import { DeletingStudentService } from "../../services/deleting-student.service";
 
@@ -33,46 +33,29 @@ export class VueListingComponent implements OnInit {
 	skills: Skill[];
 	student: Student;
 	
-	editForm: FormGroup = this.fb.group( {
-		id: [ "", Validators.required ],
-		firstname: [ "", Validators.required ],
-		lastname: [ "", Validators.required ],
-		birthDate: [ "", Validators.required ],
-		address: [ "", Validators.required ],
-		phone: [ "", Validators.required ],
-		email: [ "", Validators.required ],
-		emergencyContact: [ "" ],
-		github: [ "" ],
-		linkedin: [ "" ],
-		personalProject: [ "" ],
-		skills: this.fb.group( {
-			1: '',
-			2: '',
-			3: '',
-			4: '',
-			5: '',
-			6: '',
-			7: '',
-			8: '',
-			9: '',
-			10: '',
-			11: '',
-			12: '',
-			13: '',
-			14: '',
-			15: '',
-			16: '',
-			17: '',
-			18: '',
-			19: '',
-			20: ''
-		} )
-	} );
+	// edit form
+	editFormGroup:FormGroup;
+	skillsFormGroup:FormArray;
 	
 	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService, private fb: FormBuilder ) {
 	}
 	
 	ngOnInit() {
+		this.skillsFormGroup = this.fb.array([]);
+		this.editFormGroup = this.fb.group({
+			id: [ '' ],
+			firstname: [ '' ],
+			lastname: [ '' ],
+			birthDate: [ '' ],
+			address: [ '' ],
+			phone: [ '' ],
+			email: [ '' ],
+			emergencyContact: [ '' ],
+			github: [ '' ],
+			linkedin: [ '' ],
+			personalProject: [ '' ],
+			skillsArray: this.skillsFormGroup
+		});
 		this.getStudents();
 	}
 	/**
@@ -100,13 +83,14 @@ export class VueListingComponent implements OnInit {
 	 * qui utilise le two-way binding
 	 */
 	onEdit() {
-		let objectSkills = this.editForm.value.skills;
+		let objectSkills = this.editFormGroup.value.skillsArray;
+		console.log(objectSkills.value.checked);
 		let selectedSkills = Object.keys(objectSkills)
 			.filter((key) => { if (objectSkills[key] == true ) return key })
 			.map((key) => parseInt(key));
-		console.log( " tentative d'édition d'élève avec values -> ", this.editForm.value );
+		console.log( " tentative d'édition d'élève avec values -> ", this.editFormGroup.value );
 		console.log( " tentative d'édition d'élève avec skills -> ", selectedSkills );
-		this.editService.updateStudent( this.editForm.value.id, this.editForm.value, selectedSkills )
+		this.editService.updateStudent( this.editFormGroup.value.id, this.editFormGroup.value, selectedSkills )
 			.subscribe(
 				( message ) => {
 					console.log( message );
@@ -132,9 +116,51 @@ export class VueListingComponent implements OnInit {
 			.subscribe(
 				( student ) => {
 					this.student = student;
-					console.log( student )
+					console.log( "détail de l'étudiant -> ", student );
+					this.skillsFormGroup = this.generateAcquiredSkills(this.students[0].availableSkills, this.student);
+					this.editFormGroup = this.fb.group({
+						id: [ this.student.id ],
+						firstname: [ this.student.firstname ],
+						lastname: [ this.student.lastname ],
+						birthDate: [ this.student.birthDate ],
+						address: [ this.student.address ],
+						phone: [ this.student.phone ],
+						email: [ this.student.email ],
+						emergencyContact: [ this.student.emergencyContact ],
+						github: [ this.student.github ],
+						linkedin: [ this.student.linkedIn ],
+						personalProject: [ this.student.personalProject ],
+						skillsArray: this.skillsFormGroup
+					});
+					console.log('Formulaire dynamique créé -> ', this.editFormGroup)
 				}
 			)
+	}
+	
+	/**
+	 * On génère un FormArray dans lequel seront affichés les compétences
+	 * acquises (donc sélectionnées) ainsi que celles disponibles
+	 * -- Acquis: true, Non acquis mais disponible: false --
+	 * I DID IT BRRRUH
+	 * @param availableSkills
+	 * @param student
+	 * @returns {FormArray}
+	 */
+	private generateAcquiredSkills( availableSkills, student ): FormArray{
+		let formArray: FormArray = new FormArray([]);
+		
+		let properStudentSkills = student.skills;
+		
+		availableSkills.forEach((availableSkill) => {
+			let id = availableSkill.id;
+			let obj = {};
+			obj['id'] = id;
+			obj['checked'] = properStudentSkills.includes(availableSkill.name);
+			obj['name'] = availableSkill.name;
+			formArray.push(new FormControl(obj));
+		});
+		console.info('formArray skills -> ', formArray);
+		return formArray;
 	}
 	
 	//Voir la fiche détaillée de l'élève

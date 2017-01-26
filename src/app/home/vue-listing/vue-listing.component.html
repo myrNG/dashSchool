@@ -7,7 +7,7 @@
 		<div *ngFor="let student of students">
 			<div class="view" *ngIf="student.id == activeId">
 				<!-- Profile -->
-				<form [formGroup]="editForm" (submit)="onEdit()">
+				<form [formGroup]="editFormGroup" (submit)="onEdit()">
 					<div class="profile">
 						<div class="profile-name">
 							<p>Etudiant n°00{{student.id}}</p>
@@ -48,8 +48,10 @@
 							<div class="skills-details" *ngFor="let skill of student.skills">
 								<p>{{skill}}</p>
 							</div>
-							<div class="skills-available" formGroupName="skills" *ngFor="let avSkill of student.availableSkills">
-								<input #ck type="checkbox" [checked]="isAlreadyChosen(avSkill.name, student)" [formControlName]="avSkill.id" name="{{avSkill.name}}">{{avSkill.name}}
+							<div class="skills-available">
+								<p *ngFor="let skill of skillsFormGroup.controls; let i = index">
+									<input type="checkbox" [checked]="skillsFormGroup.controls[i].value.checked" [formControl]="skillsFormGroup.controls[i].value.id">
+								</p>
 							</div>
 						</div>
 						<div>
