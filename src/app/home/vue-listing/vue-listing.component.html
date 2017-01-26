@@ -43,14 +43,13 @@
                     </div>
                     <!-- Skills -->
                     <div class="skills">
-                        <div class="profile-entete">
+                        <div class="profile-entete" formGroupName="skillsArray">
                             <h3>Compétences acquises</h3>
-                            <div class="skills-details" *ngFor="let skill of student.skills">
-                                <p>{{skill}}</p>
+                            <div class="skills-details" *ngFor="let skill of skillsFormGroup.controls; let i = index">
+                                <p>{{skill.value.checked == true ? skill.value.name : ''}}</p>
                             </div>
-                            <div class="skills-available" formGroupName="skillsArray"
-                                 *ngFor="let skill of skillsFormGroup.controls; let i = index">
-                                <input type="checkbox" [checked]="skill.value.checked"
+                            <div class="skills-available">
+                                <input type="checkbox" *ngFor="let skill of skillsFormGroup.controls; let i = index" [checked]="skill.value.checked"
                                        (change)="changeSkills($event, skill.value.id)">{{skill.value.name}}
                             </div>
                         </div>
