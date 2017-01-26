@@ -58,21 +58,6 @@ export class VueListingComponent implements OnInit {
 		});
 		this.getStudents();
 	}
-	/**
-	 * On checke si l'id de la compétence passée en paramètre
-	 * matche avec une compétence de l'élève
-	 * @param skillName
-	 * @param student
-	 * @returns {boolean}
-	 */
-	isAlreadyChosen( skillName, student ) {
-		for ( let i = 0; i < student.skills.length; i++ ) {
-			if ( skillName == student.skills[ i ] ) {
-				return true;
-			}
-		}
-		return false;
-	}
 	
 	changeSkills(event, id){
 		if (event.target.checked) {
