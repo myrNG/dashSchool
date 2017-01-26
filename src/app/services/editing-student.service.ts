@@ -26,10 +26,7 @@ export class EditingStudentService {
 			.map( ( response: Response ) => {
 				let resp = response.json();
 				console.log('server response', resp);
-				if (resp.response == "student update") {
-					this.isUpdated = true;
-				} else
-					this.isUpdated = false;
+				this.isUpdated = resp.response == "student update";
 			} )
 	}
 }
