@@ -1,9 +1,17 @@
 <!-- Détail de la fiche élève -->
 <div class="listing-box-plus" *ngIf="activeId">
     <div class="student-card">
-        <div class="reduce-button">
-            <button (click)="seeLess()">Reduire</button>
+        <!-- Options -->
+        <div class="options">
+            <div class="reduce-button">
+                <button (click)="seeLess()">Reduire</button>
+            </div>
+            <div class="navigation">
+                <a href="" (click)="previousStudent()"><img src="../../assets/left.png" alt="" width="20px"></a>
+                <a href="" (click)="nextStudent()"><img src="../../assets/right.png" alt="" width="20px"></a>
+            </div>
         </div>
+        <!-- View Fiche étudiant -->
         <div *ngFor="let student of students">
             <div class="view" *ngIf="student.id == activeId">
                 <!-- Profile -->

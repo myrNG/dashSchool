@@ -32,6 +32,7 @@ export class VueListingComponent implements OnInit {
 	activeId: number;
 	skills: Skill[];
 	student: Student;
+	currentStudent: number = 1; // === this.activeId
 
 	// edit form
 	editFormGroup:FormGroup;
@@ -187,6 +188,19 @@ export class VueListingComponent implements OnInit {
 						console.log( message );
 					} )
 		}
+	}
+	previousStudent(){
+
+	}
+
+	nextStudent(){
+		this.activeId = this.currentStudent;
+
+		let students = this.students;
+		for(var i = 0; i < students.length; i++){
+			console.log();
+		}
+
 	}
 
 }
