@@ -107,6 +107,7 @@ export class VueListingComponent implements OnInit {
 					console.log( message );
 					if (this.editService.isUpdated) {
 						this.seeLess()
+						alert("La fiche de " + this.editFormGroup.value.firstname + " " + this.editFormGroup.value.lastname + ' a bien été modifiée !' );
 					}
 				} )
 	}
