@@ -48,10 +48,8 @@
 							<div class="skills-details" *ngFor="let skill of student.skills">
 								<p>{{skill}}</p>
 							</div>
-							<div class="skills-available">
-								<p *ngFor="let skill of skillsFormGroup.controls; let i = index">
-									<input type="checkbox" [checked]="skillsFormGroup.controls[i].value.checked" [formControl]="skillsFormGroup.controls[i].value.id">
-								</p>
+							<div class="skills-available" formGroupName="skillsArray" *ngFor="let skill of skillsFormGroup.controls; let i = index">
+								<input type="checkbox" [checked]="skill.value.checked" (change)="changeSkills($event, skill.value.id)">{{skill.value.name}}
 							</div>
 						</div>
 						<div>

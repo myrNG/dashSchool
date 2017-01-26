@@ -74,8 +74,25 @@ export class VueListingComponent implements OnInit {
 		return false;
 	}
 	
-	isAlreadyChosenForm(){
-		
+	changeSkills(event, id){
+		if (event.target.checked) {
+			this.skillsFormGroup.value.forEach((skill) => {
+				if (skill.id == id) {
+					skill.checked = true;
+				}
+			});
+		} else {
+			this.skillsFormGroup.value.forEach((skill) => {
+				if (skill.id == id) {
+					skill.checked = false;
+				}
+			});
+		}
+		let objectSkills = this.editFormGroup.value.skillsArray;
+		let selectedSkills = objectSkills
+			.filter((skill) => { if (skill.checked == true ) return skill })
+			.map((skill) => parseInt(skill.id));
+		console.log(selectedSkills);
 	}
 	
 	/**
@@ -84,10 +101,9 @@ export class VueListingComponent implements OnInit {
 	 */
 	onEdit() {
 		let objectSkills = this.editFormGroup.value.skillsArray;
-		console.log(objectSkills.value.checked);
-		let selectedSkills = Object.keys(objectSkills)
-			.filter((key) => { if (objectSkills[key] == true ) return key })
-			.map((key) => parseInt(key));
+		let selectedSkills = objectSkills
+			.filter((skill) => { if (skill.checked == true ) return skill })
+			.map((skill) => parseInt(skill.id));
 		console.log( " tentative d'édition d'élève avec values -> ", this.editFormGroup.value );
 		console.log( " tentative d'édition d'élève avec skills -> ", selectedSkills );
 		this.editService.updateStudent( this.editFormGroup.value.id, this.editFormGroup.value, selectedSkills )
@@ -116,6 +132,7 @@ export class VueListingComponent implements OnInit {
 			.subscribe(
 				( student ) => {
 					this.student = student;
+					this.student.birthDate = this.student.birthDate.date.slice(0,10)
 					console.log( "détail de l'étudiant -> ", student );
 					this.skillsFormGroup = this.generateAcquiredSkills(this.students[0].availableSkills, this.student);
 					this.editFormGroup = this.fb.group({
@@ -152,8 +169,8 @@ export class VueListingComponent implements OnInit {
 		let properStudentSkills = student.skills;
 		
 		availableSkills.forEach((availableSkill) => {
-			let id = availableSkill.id;
 			let obj = {};
+			let id = availableSkill.id;
 			obj['id'] = id;
 			obj['checked'] = properStudentSkills.includes(availableSkill.name);
 			obj['name'] = availableSkill.name;
