@@ -24,22 +24,22 @@ import { DeletingStudentService } from "../../services/deleting-student.service"
 			] )
 		] )
 	]
-	
+
 } )
 export class VueListingComponent implements OnInit {
-	
+
 	students: Student[];
 	activeId: number;
 	skills: Skill[];
 	student: Student;
-	
+
 	// edit form
 	editFormGroup:FormGroup;
 	skillsFormGroup:FormArray;
-	
+
 	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService, private fb: FormBuilder ) {
 	}
-	
+
 	ngOnInit() {
 		this.skillsFormGroup = this.fb.array([]);
 		this.editFormGroup = this.fb.group({
@@ -58,7 +58,7 @@ export class VueListingComponent implements OnInit {
 		});
 		this.getStudents();
 	}
-	
+
 	changeSkills(event, id){
 		if (event.target.checked) {
 			this.skillsFormGroup.value.forEach((skill) => {
@@ -74,7 +74,7 @@ export class VueListingComponent implements OnInit {
 			});
 		}
 	}
-	
+
 	/**
 	 * Fonction appelée par le formulaire d'édition
 	 * qui utilise le two-way binding
@@ -82,12 +82,12 @@ export class VueListingComponent implements OnInit {
 	onEdit() {
 		let objectSkills = this.editFormGroup.value.skillsArray;
 		let selectedSkills = objectSkills
-			.filter((skill) => { if (skill.checked == true ) return skill })
-			.map((skill) => parseInt(skill.id));
+            .filter((skill) => { if (skill.checked == true ) return skill })
+            .map((skill) => parseInt(skill.id));
 		console.log( " tentative d'édition d'élève avec values -> ", this.editFormGroup.value );
 		console.log( " tentative d'édition d'élève avec skills -> ", selectedSkills );
 		this.editService.updateStudent( this.editFormGroup.value.id, this.editFormGroup.value, selectedSkills )
-			.subscribe(
+            .subscribe(
 				( message ) => {
 					console.log( message );
 					if (this.editService.isUpdated) {
@@ -96,24 +96,24 @@ export class VueListingComponent implements OnInit {
 					}
 				} )
 	}
-	
+
 	/**
 	 * Récupère les étudiants en BDD
 	 */
 	getStudents() {
 		this.listService.getListing()
-			.retry( 3 ) // On retente 3 fois si la requete failed
-			.subscribe(
+            .retry( 3 ) // On retente 3 fois si la requete failed
+            .subscribe(
 				( students ) => {
 					this.students = students;
 					console.log( 'Students', this.students );
 				}
 			)
 	}
-	
+
 	getStudent( id: number ) {
 		this.listService.getStudent( id )
-			.subscribe(
+            .subscribe(
 				( student ) => {
 					this.student = student;
 					this.student.birthDate = this.student.birthDate.date.slice(0,10)
@@ -137,7 +137,7 @@ export class VueListingComponent implements OnInit {
 				}
 			)
 	}
-	
+
 	/**
 	 * On génère un FormArray dans lequel seront affichés les compétences
 	 * acquises (donc sélectionnées) ainsi que celles disponibles
@@ -149,9 +149,9 @@ export class VueListingComponent implements OnInit {
 	 */
 	private generateAcquiredSkills( availableSkills, student ): FormArray{
 		let formArray: FormArray = new FormArray([]);
-		
+
 		let properStudentSkills = student.skills;
-		
+
 		availableSkills.forEach((availableSkill) => {
 			let obj = {};
 			let id = availableSkill.id;
@@ -163,7 +163,7 @@ export class VueListingComponent implements OnInit {
 		console.info('formArray skills -> ', formArray);
 		return formArray;
 	}
-	
+
 	//Voir la fiche détaillée de l'élève
 	seeMore( id: number ) {
 		this.activeId = null;
@@ -172,21 +172,21 @@ export class VueListingComponent implements OnInit {
 			this.getStudent( id );
 		}
 	}
-	
+
 	seeLess() {
 		this.activeId = null;
 	}
-	
+
 	deleteStudent( id ) {
 		console.log( 'tentative de suppression de student' );
 		let ok = confirm( 'Vous êtes sur le point de supprimer un élève, êtes-vous sûr(e) ?' );
 		if ( ok ) {
 			this.deletingService.deleteStudent( id )
-				.subscribe(
+                .subscribe(
 					( message ) => {
 						console.log( message );
 					} )
 		}
 	}
-	
+
 }

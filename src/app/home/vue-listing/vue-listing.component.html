@@ -1,115 +1,118 @@
 <!-- Détail de la fiche élève -->
 <div class="listing-box-plus" *ngIf="activeId">
-	<div class="student-card">
-		<div class="reduce-button">
-			<button (click)="seeLess()">Reduire</button>
-		</div>
-		<div *ngFor="let student of students">
-			<div class="view" *ngIf="student.id == activeId">
-				<!-- Profile -->
-				<form [formGroup]="editFormGroup" (submit)="onEdit()">
-					<div class="profile">
-						<div class="profile-name">
-							<p>Etudiant n°00{{student.id}}</p>
-							<input type="hidden" [(ngModel)]="student.id" formControlName="id">
-							<input class="input" type="text" [(ngModel)]="student.firstname"
-							       formControlName="firstname">
-							<input class="input" type="text" [(ngModel)]="student.lastname" formControlName="lastname">
-							<p>Né{{ student.gender == 'female' ? 'e' : '' }} le <input type="date"
-							                                                           [(ngModel)]="student.birthDate.date"
-							                                                           formControlName="birthDate"></p>
-						</div>
-						<div class="profile-photo">
-							<img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo" width="200px"/>
-						</div>
-					</div>
-					<!-- Coordonnées -->
-					<div class="address">
-						<div class="profile-entete">
-							<h3>Coordonnées</h3>
-						</div>
-						<label for="address">Adresse : </label>
-						<input class="input input-coordonnees" type="text" id="address" [(ngModel)]="student.address"
-						       formControlName="address"><br><br>
-						<label for="phone">Téléphone : </label>
-						<input class="input input-coordonnees" type="text" id="phone" [(ngModel)]="student.phone"
-						       formControlName="phone"><br><br>
-						<label for="email">Mail : </label>
-						<input class="input input-coordonnees" type="text" id="email" [(ngModel)]="student.email"
-						       formControlName="email"><br><br>
-						<label for="emergencyContact">Contact en cas d'urgence : </label>
-						<input class="input input-coordonnees" type="text" id="emergencyContact"
-						       [(ngModel)]="student.emergencyContact" formControlName="emergencyContact"><br><br>
-					</div>
-					<!-- Skills -->
-					<div class="skills">
-						<div class="profile-entete">
-							<h3>Compétences acquises</h3>
-							<div class="skills-details" *ngFor="let skill of student.skills">
-								<p>{{skill}}</p>
-							</div>
-							<div class="skills-available" formGroupName="skillsArray" *ngFor="let skill of skillsFormGroup.controls; let i = index">
-								<input type="checkbox" [checked]="skill.value.checked" (change)="changeSkills($event, skill.value.id)">{{skill.value.name}}
-							</div>
-						</div>
-						<div>
-							<p>Site : <input class="input input-wide" type="text" [(ngModel)]="student.personalProject" formControlName="personalProject"></p>
-						</div>
-					</div>
-					<!-- Social Medias -->
-					<div class="social-medias">
-						<div class="profile-entete">
-							<h3>Réseaux Sociaux</h3>
-						</div>
-						<p>Github : <input class="input input-wide" [(ngModel)]="student.github"
-						                   formControlName="github"></p>
-						<p>LinkedIn : <input class="input input-wide" [(ngModel)]="student.linkedIn"
-						                     formControlName="linkedin"></p>
-					</div>
-					<button>VALIDER LA MODIF</button>
-				</form>
-			</div>
-		</div>
-	</div>
+    <div class="student-card">
+        <div class="reduce-button">
+            <button (click)="seeLess()">Reduire</button>
+        </div>
+        <div *ngFor="let student of students">
+            <div class="view" *ngIf="student.id == activeId">
+                <!-- Profile -->
+                <form [formGroup]="editFormGroup" (submit)="onEdit()">
+                    <div class="profile">
+                        <div class="profile-name">
+                            <p>Etudiant n°00{{student.id}}</p>
+                            <input type="hidden" [(ngModel)]="student.id" formControlName="id">
+                            <input class="input" type="text" [(ngModel)]="student.firstname"
+                                   formControlName="firstname">
+                            <input class="input" type="text" [(ngModel)]="student.lastname" formControlName="lastname">
+                            <p>Né{{ student.gender == 'female' ? 'e' : '' }} le <input type="date"
+                                                                                       [(ngModel)]="student.birthDate.date"
+                                                                                       formControlName="birthDate"></p>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo" width="200px"/>
+                        </div>
+                    </div>
+                    <!-- Coordonnées -->
+                    <div class="address">
+                        <div class="profile-entete">
+                            <h3>Coordonnées</h3>
+                        </div>
+                        <label for="address">Adresse : </label>
+                        <input class="input input-coordonnees" type="text" id="address" [(ngModel)]="student.address"
+                               formControlName="address"><br><br>
+                        <label for="phone">Téléphone : </label>
+                        <input class="input input-coordonnees" type="text" id="phone" [(ngModel)]="student.phone"
+                               formControlName="phone"><br><br>
+                        <label for="email">Mail : </label>
+                        <input class="input input-coordonnees" type="text" id="email" [(ngModel)]="student.email"
+                               formControlName="email"><br><br>
+                        <label for="emergencyContact">Contact en cas d'urgence : </label>
+                        <input class="input input-coordonnees" type="text" id="emergencyContact"
+                               [(ngModel)]="student.emergencyContact" formControlName="emergencyContact"><br><br>
+                    </div>
+                    <!-- Skills -->
+                    <div class="skills">
+                        <div class="profile-entete">
+                            <h3>Compétences acquises</h3>
+                            <div class="skills-details" *ngFor="let skill of student.skills">
+                                <p>{{skill}}</p>
+                            </div>
+                            <div class="skills-available" formGroupName="skillsArray"
+                                 *ngFor="let skill of skillsFormGroup.controls; let i = index">
+                                <input type="checkbox" [checked]="skill.value.checked"
+                                       (change)="changeSkills($event, skill.value.id)">{{skill.value.name}}
+                            </div>
+                        </div>
+                        <div>
+                            <p>Site : <input class="input input-wide" type="text" [(ngModel)]="student.personalProject"
+                                             formControlName="personalProject"></p>
+                        </div>
+                    </div>
+                    <!-- Social Medias -->
+                    <div class="social-medias">
+                        <div class="profile-entete">
+                            <h3>Réseaux Sociaux</h3>
+                        </div>
+                        <p>Github : <input class="input input-wide" [(ngModel)]="student.github"
+                                           formControlName="github"></p>
+                        <p>LinkedIn : <input class="input input-wide" [(ngModel)]="student.linkedIn"
+                                             formControlName="linkedin"></p>
+                    </div>
+                    <button>VALIDER LA MODIF</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <!-- Aperçu Listing de la Home -->
 <div class="listing-box" *ngIf="students">
-	
-	<div class="students-finder">
-		<input type="text" [(ngModel)]="value" placeholder="Rechercher">
-	</div>
-	<table>
-		<thead>
-		<tr>
-			<th></th>
-			<th>Prénom</th>
-			<th>Nom</th>
-			<th>Email</th>
-			<th><a routerLink="/add" class="add">+</a></th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr *ngFor="let student of students | customFilter: value" [@flyInOut]="student.state"
-		    [@flyInOut]="student.state">
-			<td class="listing-photo">
-				<img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo student" width="100px">
-			</td>
-			<td>{{student.firstname | firstLetterUppercase}}</td>
-			<td>{{student.lastname | firstLetterUppercase}}</td>
-			<td><a href="mailto:{{student.email}}">{{student.email}}</a></td>
-			<td class="options">
-				<button class="details" (click)="seeMore(student.id)">{{ "détails" | uppercase }}</button>
-				<button (click)="deleteStudent(student.id)">X</button>
-			</td>
-		</tr>
-		</tbody>
-	</table>
-	
-	<div *ngIf="!students">
-		<p>Pas de promo actuellement</p>
-	</div>
+
+    <div class="students-finder">
+        <input type="text" [(ngModel)]="value" placeholder="Rechercher">
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th><a routerLink="/add" class="add">+</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let student of students | customFilter: value" [@flyInOut]="student.state"
+            [@flyInOut]="student.state">
+            <td class="listing-photo">
+                <img src="{{ student.photo || '../../../assets/noImage.png' }}" alt="photo student" width="100px">
+            </td>
+            <td>{{student.firstname | firstLetterUppercase}}</td>
+            <td>{{student.lastname | firstLetterUppercase}}</td>
+            <td><a href="mailto:{{student.email}}">{{student.email}}</a></td>
+            <td class="options">
+                <button class="details" (click)="seeMore(student.id)">{{ "détails" | uppercase }}</button>
+                <button (click)="deleteStudent(student.id)">X</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!students">
+        <p>Pas de promo actuellement</p>
+    </div>
 
 
 </div>
