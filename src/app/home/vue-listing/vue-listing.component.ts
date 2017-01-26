@@ -88,11 +88,6 @@ export class VueListingComponent implements OnInit {
 				}
 			});
 		}
-		let objectSkills = this.editFormGroup.value.skillsArray;
-		let selectedSkills = objectSkills
-			.filter((skill) => { if (skill.checked == true ) return skill })
-			.map((skill) => parseInt(skill.id));
-		console.log(selectedSkills);
 	}
 	
 	/**
@@ -110,6 +105,9 @@ export class VueListingComponent implements OnInit {
 			.subscribe(
 				( message ) => {
 					console.log( message );
+					if (this.editService.isUpdated) {
+						this.seeLess()
+					}
 				} )
 	}
 	
