@@ -2,10 +2,11 @@ import { Component, OnInit, Input, trigger, state, style, transition, animate } 
 import { Student } from "../../models/student";
 import { Skill } from "../../models/skill";
 import { ListingService } from '../../services/listing.service';
-import { CustomFilterPipe } from '../../pipes/custom-filter.pipe';
-import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from "@angular/forms";
+import { FormGroup, FormControl, FormBuilder, FormArray } from "@angular/forms";
 import { EditingStudentService } from "../../services/editing-student.service";
 import { DeletingStudentService } from "../../services/deleting-student.service";
+import { IMyOptions } from "mydatepicker";
+import { Router } from "@angular/router";
 
 @Component( {
 	selector: 'app-vue-listing',
@@ -37,8 +38,11 @@ export class VueListingComponent implements OnInit {
 	// edit form
 	editFormGroup:FormGroup;
 	skillsFormGroup:FormArray;
+	private myDatePickerOptions: IMyOptions = {
+		dateFormat: 'dd.mm.yyyy',
+	};
 
-	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService, private fb: FormBuilder ) {
+	constructor( private listService: ListingService, private editService: EditingStudentService, private deletingService: DeletingStudentService, private fb: FormBuilder, private router: Router ) {
 	}
 
 	ngOnInit() {
@@ -92,8 +96,8 @@ export class VueListingComponent implements OnInit {
 				( message ) => {
 					console.log( message );
 					if (this.editService.isUpdated) {
-						this.seeLess()
-						alert("La fiche de " + this.editFormGroup.value.firstname + " " + this.editFormGroup.value.lastname + ' a bien été modifiée !' );
+						this.seeLess();
+						this.router.navigateByUrl('/home');
 					}
 				} )
 	}

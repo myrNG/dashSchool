@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 
 @Injectable()
 export class DeletingStudentService {
@@ -9,6 +9,11 @@ export class DeletingStudentService {
 	}
 	
 	deleteStudent( id: number ) {
+		//let headers = new Headers({
+		//	'Content-Type': 'application/json',
+		//	'X-HTTP-Method-Override': "DELETE"
+		//});
+		//let options = new RequestOptions({ headers: headers });
 		return this.http.get( this.deletingURL + id )
 			.map( (response: Response) => {
 				let resp = response.json();
