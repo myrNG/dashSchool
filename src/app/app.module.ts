@@ -39,7 +39,7 @@ import { MyDatePickerModule } from "mydatepicker";
 		HttpModule,
 		routing,
 		ReactiveFormsModule,
-		//MyDatePickerModule
+		MyDatePickerModule
 	],
 	providers: [
 		AuthGuard,
